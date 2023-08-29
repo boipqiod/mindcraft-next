@@ -9,7 +9,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/mindcraft-next/out//_next/static/media/i-play-g.24f64c85.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAVUlEQVR42kWNywmAMBBEx0P6sC7rEPY1pDctRezBLgxJxEEiy+7CYz5ioXExSVIkBtHCw8Yo00KjUqJxM0tWeLPvYWCU/U9FfS3RLV3B/oWy/rUkhgepW0TxUpUC5gAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":8});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/i-play-g.24f64c85.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAVUlEQVR42kWNywmAMBBEx0P6sC7rEPY1pDctRezBLgxJxEEiy+7CYz5ioXExSVIkBtHCw8Yo00KjUqJxM0tWeLPvYWCU/U9FfS3RLV3B/oWy/rUkhgepW0TxUpUC5gAAAABJRU5ErkJggg==","blurWidth":8,"blurHeight":8});
 
 /***/ }),
 
@@ -19,7 +19,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/mindcraft-next/out//_next/static/media/i-share-g.0d5a2b24.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAZklEQVR42k2Nuw2DYBgD/YUkcyRLRMoWbPMf7wYqlkCMAg3QsAaPJZAQCK6zZfkkYRJPqbTItMcDetpir16ph0/FRBN44ucWRpz7nsM/KwOOj07Cd2b41Mw0yeN+2tFGpksbW27SBp+KIIpILNk/AAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":8});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/i-share-g.0d5a2b24.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAAZklEQVR42k2Nuw2DYBgD/YUkcyRLRMoWbPMf7wYqlkCMAg3QsAaPJZAQCK6zZfkkYRJPqbTItMcDetpir16ph0/FRBN44ucWRpz7nsM/KwOOj07Cd2b41Mw0yeN+2tFGpksbW27SBp+KIIpILNk/AAAAAElFTkSuQmCC","blurWidth":8,"blurHeight":8});
 
 /***/ }),
 

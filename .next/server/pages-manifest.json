@@ -1,10 +1,10 @@
 {
   "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/detail/[id]": "pages/detail/[id].html",
   "/auth/register": "pages/auth/register.html",
-  "/auth/login": "pages/auth/login.html",
+  "/detail/[id]": "pages/detail/[id].html",
+  "/_error": "pages/_error.js",
   "/create": "pages/create.html",
+  "/auth/login": "pages/auth/login.html",
   "/": "pages/index.js",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html"

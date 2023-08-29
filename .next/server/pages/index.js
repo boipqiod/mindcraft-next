@@ -11,7 +11,7 @@ exports.modules = {
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/mindcraft-next/out//_next/static/media/i-share-d.99cf2e97.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAATUlEQVR42mXNuw1AABgA4e/3moMlJLawjXXEKDRorOGxhIpIXHfNHQQyhHgUWEwCcqlWbzdKqZ02nQqgcVl1Si+F0BocRsk3OpvEb3sDh+kNgQ7Xx8wAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":8});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/i-share-d.99cf2e97.png","height":30,"width":30,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAQAAABuBnYAAAAATUlEQVR42mXNuw1AABgA4e/3moMlJLawjXXEKDRorOGxhIpIXHfNHQQyhHgUWEwCcqlWbzdKqZ02nQqgcVl1Si+F0BocRsk3OpvEb3sDh+kNgQ7Xx8wAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":8});
 
 /***/ }),
 
