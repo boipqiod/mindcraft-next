@@ -2,8 +2,8 @@ module.exports = {
     apps: [
         {
             name: 'mindcraft-web',
-            script: 'next',
-            args: 'start -p $PORT',
+            script: '/home/ec2-user/mindcraft-web/node_modules/.bin/next',
+            args: 'start',
             env: {
                 PORT: 8000,
             },
