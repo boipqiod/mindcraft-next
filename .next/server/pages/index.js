@@ -124,8 +124,9 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_cha
 const MainItem = (props)=>{
     const { toDetail } = (0,_hooks_utils_usePage__WEBPACK_IMPORTED_MODULE_6__/* .usePage */ .q)();
     const { share } = (0,_hooks_utils_useShare__WEBPACK_IMPORTED_MODULE_8__/* .useShare */ .S)();
+    console.log(props);
     const onClick = ()=>{
-        toDetail(props.id);
+        toDetail(props.id).then();
     };
     const onShare = ()=>{
         share(props.title, `${window.location.href}test/${props.id}`).then();
@@ -427,9 +428,9 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_com
 
 
 
-const getStaticProps = async (context)=>{
-    const bestItem = _utils_dummy__WEBPACK_IMPORTED_MODULE_3__/* .dummyBest */ .u;
-    const items = _utils_dummy__WEBPACK_IMPORTED_MODULE_3__/* .dummy */ .j;
+const getStaticProps = async ()=>{
+    const bestItem = _utils_dummy__WEBPACK_IMPORTED_MODULE_3__/* .dummyBest */ .u2;
+    const items = _utils_dummy__WEBPACK_IMPORTED_MODULE_3__/* .dummy */ .jX;
     return {
         props: {
             bestItem,
@@ -441,11 +442,7 @@ const Index = ({ bestItem, items })=>{
     const main = (0,_hooks_useMain__WEBPACK_IMPORTED_MODULE_8__/* .useMain */ .l)();
     return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_9___default()), {
-                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("title", {
-                    children: "테스트"
-                })
-            }),
+            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_9___default()), {}),
             /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Stack, {
                 children: [
                     /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Box, {

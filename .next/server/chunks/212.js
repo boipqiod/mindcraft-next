@@ -62,7 +62,7 @@ const AuthProvider = ({ children })=>{
 const TestContext = /*#__PURE__*/ react__WEBPACK_IMPORTED_MODULE_1___default().createContext(undefined);
 const TestProvider = ({ children })=>{
     const [testItemList, setTestItemList] = react__WEBPACK_IMPORTED_MODULE_1___default().useState([
-        ..._utils_dummy__WEBPACK_IMPORTED_MODULE_2__/* .dummy */ .j
+        ..._utils_dummy__WEBPACK_IMPORTED_MODULE_2__/* .dummy */ .jX
     ]);
     return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(TestContext.Provider, {
         value: {
@@ -352,8 +352,9 @@ var colors;
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
-  j: () => (/* binding */ dummy),
-  u: () => (/* binding */ dummyBest)
+  jX: () => (/* binding */ dummy),
+  u2: () => (/* binding */ dummyBest),
+  _B: () => (/* binding */ testDetialDummy)
 });
 
 ;// CONCATENATED MODULE: ./src/assets/demo1.png
@@ -605,6 +606,78 @@ const dummy = [
         description: "인생에서 중요하게 생각하는 가치관은 무엇인가요?",
         url: demo7.src,
         userId: 120
+    }
+];
+const testDetialDummy = [
+    {
+        step: 1,
+        text: "당신이 밥을 먹을 때는?",
+        answers: [
+            {
+                text: "급하게 먹는다.",
+                resultIndex: 0
+            },
+            {
+                text: "천천히 먹는다.",
+                resultIndex: 1
+            }
+        ]
+    },
+    {
+        step: 2,
+        text: "주말에는 보통 무엇을 하시나요?",
+        answers: [
+            {
+                text: "친구와 만나 놀기",
+                resultIndex: 0
+            },
+            {
+                text: "집에서 쉬기",
+                resultIndex: 1
+            }
+        ]
+    },
+    {
+        step: 3,
+        text: "새로운 기술을 배울 때 나는?",
+        answers: [
+            {
+                text: "빠르게 시도해보려 한다.",
+                resultIndex: 0
+            },
+            {
+                text: "주변 지원을 받아가며 천천히 익힌다.",
+                resultIndex: 1
+            }
+        ]
+    },
+    {
+        step: 4,
+        text: "여행 가기 전에 나는?",
+        answers: [
+            {
+                text: "세부 일정을 정확하게 짜놓는 편이다.",
+                resultIndex: 0
+            },
+            {
+                text: "대략적인 계획만 세우고 자유롭게 다니는 편이다.",
+                resultIndex: 1
+            }
+        ]
+    },
+    {
+        step: 5,
+        text: "스트레스를 받았을 때 나의 해소 방법은?",
+        answers: [
+            {
+                text: "운동하거나 외출하여 스트레스를 푼다.",
+                resultIndex: 0
+            },
+            {
+                text: "독서나 명상을 통해 스트레스를 해소한다.",
+                resultIndex: 1
+            }
+        ]
     }
 ];
 
