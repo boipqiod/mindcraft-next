@@ -12,7 +12,7 @@ export const useDetail = () => {
     const [item, setItem] = useState<MindTestItem>()
 
     const {getTestDetail} = useTest()
-    const {toMain, toBack} = usePage()
+    const {toMain, toBack, toPlaying} = usePage()
 
     useEffect(()=>{
         window.scrollTo(0,0)
@@ -31,7 +31,11 @@ export const useDetail = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
+    const toDetail = () => {
+        toPlaying(Number(id))
+    }
+
     return {
-        item, toBack
+        item, toBack, toDetail
     };
 }

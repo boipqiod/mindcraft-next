@@ -21,8 +21,10 @@ export const MainItem = (props: MainItemProps) => {
     const {toDetail} = usePage()
     const {share} = useShare()
 
+
+    console.log(props)
     const onClick = () => {
-        toDetail(props.id)
+        toDetail(props.id).then()
     }
 
     const onShare = () => {
