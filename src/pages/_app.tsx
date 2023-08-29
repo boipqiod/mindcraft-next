@@ -4,8 +4,6 @@ import {AppLayout} from "@/layout/AppLayout";
 import {ChakraProvider, extendTheme} from "@chakra-ui/react";
 import {TestProvider} from "@/context/TestProvider";
 import {AuthProvider} from "@/context/AuthProvider";
-import {DevSupport} from "@react-buddy/ide-toolbox-next";
-import {ComponentPreviews, useInitial} from "@/dev";
 
 const theme = extendTheme({
     breakpoints: {
@@ -32,11 +30,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
             <TestProvider>
                 <AuthProvider>
                     <AppLayout>
-                        <DevSupport ComponentPreviews={ComponentPreviews}
-                                    useInitialHook={useInitial}
-                        >
-                            <Component {...pageProps} />
-                        </DevSupport>
+                        <Component {...pageProps} />
                     </AppLayout>
                 </AuthProvider>
             </TestProvider>

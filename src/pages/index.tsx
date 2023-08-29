@@ -6,7 +6,6 @@ import {SelectionBadge} from "@/components/common/SelectionBadge";
 import React from "react";
 import {MainItemScrollList} from "@/components/MainItem/MainItemScrollList";
 import {useMain} from "@/hooks/useMain";
-import { GetServerSidePropsContext } from 'next';
 import Head from "next/head";
 
 type Props = {
@@ -14,7 +13,7 @@ type Props = {
     items: MindTestItem[];
 };
 
-export const getStaticProps = async (context: GetServerSidePropsContext) => {
+export const getStaticProps = async () => {
 
     const bestItem = dummyBest
     const items = dummy
@@ -31,7 +30,7 @@ export const Index = ( { bestItem, items }: Props ) => {
     return (
         <>
             <Head>
-                <title>테스트</title>
+                {/*<title>테스트</title>*/}
             </Head>
 
             <Stack>

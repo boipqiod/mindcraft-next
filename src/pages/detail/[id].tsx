@@ -5,17 +5,17 @@ import React from "react";
 import {useDetail} from "@/hooks/useDetail";
 import {useShare} from "@/hooks/utils/useShare";
 import {ContItem} from "@/components/MainItem/ContItem";
-export default function Id(){
-    const {item, toBack} = useDetail()
+
+export const Detail = () => {
+    const hook = useDetail()
     const {share} = useShare()
 
     const onShare = () => {
-        if (!item) return
-        share(item.title ?? "MindCraft", `${window.location.href}`).then()
+        if (!hook.item) return
+        share(hook.item.title ?? "MindCraft", `${window.location.href}`).then()
     }
     return (
         <>
-
             <Stack
                 pos={"relative"}
                 alignItems={"center"}
@@ -25,24 +25,25 @@ export default function Id(){
                     left={0}
                     colorScheme={"transparent"}
                     color={"black"}
-                    onClick={toBack}
+                    onClick={hook.toBack}
                 >{"<"}</Button>
 
                 <Heading
                     width={"full"}
                     textAlign={"center"}
                     mb={10}
-                >{item?.title}</Heading>
+                >{hook.item?.title}</Heading>
 
                 <Stack
                     width={{base: "90%", md: "300px"}}
                     alignItems={"center"}
                 >
                     <Image
-                        src={item?.url}
+                        src={hook.item?.url}
                         aspectRatio={3 / 4}
                         borderRadius={4}
                         objectFit='cover'
+                        alt={hook.item?.title}
                     />
 
                     <Text
@@ -50,20 +51,21 @@ export default function Id(){
                         mb={10}
                         textAlign={"center"}
                     >
-                        {item?.description}
+                        {hook.item?.description}
                     </Text>
 
                     <HStack
                         fontSize={"xs"}
                         mb={3}
                     >
-                        {ContItem(i_play.src, item?.playedCount ?? 0)}
-                        {ContItem(i_share.src, item?.sharedCount ?? 0)}
+                        {ContItem(i_play.src, hook.item?.playedCount ?? 0)}
+                        {ContItem(i_share.src, hook.item?.sharedCount ?? 0)}
                     </HStack>
                     <Button
                         bg={"#F5C31F"}
                         width={"100%"}
                         mb={5}
+                        onClick={hook.toDetail}
                     >시작하기</Button>
                     <Button
                         onClick={onShare}
@@ -75,3 +77,5 @@ export default function Id(){
 
     )
 }
+
+export default Detail

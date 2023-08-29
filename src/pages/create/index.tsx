@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import {InfoOutlineIcon} from "@chakra-ui/icons";
 import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'; // import styles
+import 'react-quill/dist/quill.snow.css';
 
 import {useCreate} from "@/hooks/useCreate";
 import React from "react";
