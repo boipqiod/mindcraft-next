@@ -13,12 +13,12 @@ import {
     Select
 } from "@chakra-ui/react";
 import {InfoOutlineIcon} from "@chakra-ui/icons";
-import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 
 import {useCreate} from "@/hooks/useCreate";
 import React from "react";
 import {KeyButton} from "@/components/common/KeyButton";
+import {QuillWrapper} from "@/components/common/QuillWrapper";
 
 export const Create = () => {
     const hook = useCreate()
@@ -293,7 +293,7 @@ export const Create = () => {
                                         <Text
                                             fontSize={"lg"}
                                         >테스트 설명</Text>
-                                        <ReactQuill
+                                        <QuillWrapper
                                             value={hook.resultItems[index]?.description}
                                             data-index={hook.resultShowIndex}
                                             onChange={hook.handleResultHtmlInput}
