@@ -4,8 +4,8 @@
   "/detail/[id]": "pages/detail/[id].js",
   "/detail/[id]/play": "pages/detail/[id]/play.js",
   "/_error": "pages/_error.js",
-  "/create": "pages/create.js",
   "/": "pages/index.js",
   "/auth/login": "pages/auth/login.js",
+  "/create": "pages/create.js",
   "/_document": "pages/_document.js"
 }

@@ -20,13 +20,9 @@ export const MainItem = (props: MainItemProps) => {
 
     const {toDetail} = usePage()
     const {share} = useShare()
-
-
-    console.log(props)
     const onClick = () => {
         toDetail(props.id).then()
     }
-
     const onShare = () => {
         share(props.title, `${window.location.href}test/${props.id}`).then()
     }

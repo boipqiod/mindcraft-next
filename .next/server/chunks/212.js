@@ -281,8 +281,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2210);
 /* harmony import */ var _context_TestProvider__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(5740);
 /* harmony import */ var _context_AuthProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3523);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(968);
+/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_6__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__]);
 ([_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
 
 
 
@@ -299,10 +302,13 @@ const theme = (0,_chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__.extendTheme)({
             html: {
                 fontSize: "14px",
                 backgroundColor: "#d9d9d9",
-                width: "100vw",
                 display: "flex",
                 justifyContent: "center",
                 minHeight: "100vh"
+            },
+            body: {
+                margin: "0",
+                padding: "0"
             }
         }
     }
@@ -312,10 +318,18 @@ const MyApp = ({ Component, pageProps })=>{
         theme: theme,
         children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_context_TestProvider__WEBPACK_IMPORTED_MODULE_4__/* .TestProvider */ .o, {
             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_context_AuthProvider__WEBPACK_IMPORTED_MODULE_5__/* .AuthProvider */ .H, {
-                children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__/* .AppLayout */ .L, {
-                    children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
-                        ...pageProps
-                    })
+                children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__/* .AppLayout */ .L, {
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_6___default()), {
+                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                                rel: "manifest",
+                                href: "/manifest.json"
+                            })
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
+                            ...pageProps
+                        })
+                    ]
                 })
             })
         })

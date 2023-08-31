@@ -124,7 +124,6 @@ var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_cha
 const MainItem = (props)=>{
     const { toDetail } = (0,_hooks_utils_usePage__WEBPACK_IMPORTED_MODULE_6__/* .usePage */ .q)();
     const { share } = (0,_hooks_utils_useShare__WEBPACK_IMPORTED_MODULE_8__/* .useShare */ .S)();
-    console.log(props);
     const onClick = ()=>{
         toDetail(props.id).then();
     };
