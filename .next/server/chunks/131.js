@@ -17,12 +17,12 @@ _utils_Requester__WEBPACK_IMPORTED_MODULE_0__ = (__webpack_async_dependencies__.
 
 
 class AuthService {
-    static async register(email, password, nickname, image) {
+    static async register(email, password, nickname, imageUrl) {
         const data = {
             email: email,
             password: password,
             nickname: nickname,
-            image: image
+            url: imageUrl
         };
         return await _utils_Requester__WEBPACK_IMPORTED_MODULE_0__/* .Requester */ .l.instance.request(_types_api_config__WEBPACK_IMPORTED_MODULE_1__/* .APIConfig */ .cO.auth.register, data);
     }
@@ -39,8 +39,9 @@ class AuthService {
         };
         return await _utils_Requester__WEBPACK_IMPORTED_MODULE_0__/* .Requester */ .l.instance.request(_types_api_config__WEBPACK_IMPORTED_MODULE_1__/* .APIConfig */ .cO.auth.requestCode, data);
     }
-    static async requestCodeSubmit(code) {
+    static async requestCodeSubmit(email, code) {
         const data = {
+            email: email,
             code: code
         };
         return await _utils_Requester__WEBPACK_IMPORTED_MODULE_0__/* .Requester */ .l.instance.request(_types_api_config__WEBPACK_IMPORTED_MODULE_1__/* .APIConfig */ .cO.auth.requestCodeSubmit, data);
@@ -82,16 +83,16 @@ var APIConfig;
         };
         var register = auth.register = {
             method: httpMethod.post,
-            url: "/auth/register",
+            url: "/auth/signup",
             contentType: httpContentType.form
         };
         var requestCode = auth.requestCode = {
             method: httpMethod.post,
-            url: "/auth/request-code"
+            url: "/auth/email"
         };
         var requestCodeSubmit = auth.requestCodeSubmit = {
             method: httpMethod.post,
-            url: "/auth/request-code-submit"
+            url: "/auth/email/verify"
         };
     })(auth = APIConfig.auth || (APIConfig.auth = {}));
     let test;

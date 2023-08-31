@@ -22,21 +22,13 @@ export default class APIResponse<T> {
 export namespace response {
     export namespace auth {
         export type signIn = {
-            accessToken: string
-            refreshToken: string
+            id: string
+            token: string
         }
 
         export type register = {
-            id: number
-            email: string
-            nickname: string
-            image: string
-        }
-        export type requestCode = {
-            code: string
-        }
-        export type requestCodeSubmit = {
-            isSuccessful: boolean
+            id: string // 유저 아이디
+            token: string // jwt 토큰
         }
     }
 

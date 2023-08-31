@@ -1,11 +1,11 @@
 {
   "/_app": "pages/_app.js",
   "/auth/register": "pages/auth/register.js",
-  "/detail/[id]": "pages/detail/[id].js",
-  "/detail/[id]/play": "pages/detail/[id]/play.js",
-  "/_error": "pages/_error.js",
-  "/": "pages/index.js",
   "/auth/login": "pages/auth/login.js",
+  "/detail/[id]": "pages/detail/[id].js",
+  "/_error": "pages/_error.js",
+  "/detail/[id]/play": "pages/detail/[id]/play.js",
+  "/": "pages/index.js",
   "/create": "pages/create.js",
   "/_document": "pages/_document.js"
 }

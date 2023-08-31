@@ -413,11 +413,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_MainItem_MainItemScrollList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(1590);
 /* harmony import */ var _hooks_useMain__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(9675);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(968);
-/* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_9__);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_components_MainItem_MainItemList__WEBPACK_IMPORTED_MODULE_1__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__, _components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__, _components_MainItem_MainItemScrollList__WEBPACK_IMPORTED_MODULE_7__]);
 ([_components_MainItem_MainItemList__WEBPACK_IMPORTED_MODULE_1__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__, _components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__, _components_MainItem_MainItemScrollList__WEBPACK_IMPORTED_MODULE_7__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
-
 
 
 
@@ -439,68 +436,65 @@ const getStaticProps = async ()=>{
 };
 const Index = ({ bestItem, items })=>{
     const main = (0,_hooks_useMain__WEBPACK_IMPORTED_MODULE_8__/* .useMain */ .l)();
-    return /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [
-            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_9___default()), {}),
-            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Stack, {
-                children: [
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Box, {
-                        w: "100%",
-                        children: [
-                            /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.HStack, {
-                                justify: "space-between",
-                                align: "end",
-                                children: [
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
-                                        isSelected: true,
-                                        children: "추천 리스트"
-                                    }),
-                                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Button, {
-                                        color: "white",
-                                        mb: 3,
-                                        p: 0,
-                                        bg: _types_common__WEBPACK_IMPORTED_MODULE_4__/* .colors */ .O.key,
-                                        onClick: main.toCreate,
-                                        children: "+"
-                                    })
-                                ]
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_MainItem_MainItemScrollList__WEBPACK_IMPORTED_MODULE_7__/* .MainItemScrollList */ .P, {
-                                items: bestItem
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.HStack, {
-                        children: [
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
-                                onClick: ()=>{
-                                    main.setSelectedIndex(0);
-                                },
-                                isSelected: main.selectedIndex === 0,
-                                children: "최신"
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
-                                onClick: ()=>{
-                                    main.setSelectedIndex(1);
-                                },
-                                isSelected: main.selectedIndex === 1,
-                                children: "베스트"
-                            }),
-                            /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
-                                onClick: ()=>{
-                                    main.setSelectedIndex(2);
-                                },
-                                isSelected: main.selectedIndex === 2,
-                                children: "최다 공유"
-                            })
-                        ]
-                    }),
-                    /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_MainItem_MainItemList__WEBPACK_IMPORTED_MODULE_1__/* .MainItemList */ .b, {
-                        items: items
-                    })
-                ]
-            })
-        ]
+    return /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Stack, {
+            children: [
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Box, {
+                    w: "100%",
+                    children: [
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.HStack, {
+                            justify: "space-between",
+                            align: "end",
+                            children: [
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
+                                    isSelected: true,
+                                    children: "추천 리스트"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                                    color: "white",
+                                    mb: 3,
+                                    p: 0,
+                                    bg: _types_common__WEBPACK_IMPORTED_MODULE_4__/* .colors */ .O.key,
+                                    onClick: main.toCreate,
+                                    children: "+"
+                                })
+                            ]
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_MainItem_MainItemScrollList__WEBPACK_IMPORTED_MODULE_7__/* .MainItemScrollList */ .P, {
+                            items: bestItem
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_chakra_ui_react__WEBPACK_IMPORTED_MODULE_2__.HStack, {
+                    children: [
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
+                            onClick: ()=>{
+                                main.setSelectedIndex(0);
+                            },
+                            isSelected: main.selectedIndex === 0,
+                            children: "최신"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
+                            onClick: ()=>{
+                                main.setSelectedIndex(1);
+                            },
+                            isSelected: main.selectedIndex === 1,
+                            children: "베스트"
+                        }),
+                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_common_SelectionBadge__WEBPACK_IMPORTED_MODULE_5__/* .SelectionBadge */ .W, {
+                            onClick: ()=>{
+                                main.setSelectedIndex(2);
+                            },
+                            isSelected: main.selectedIndex === 2,
+                            children: "최다 공유"
+                        })
+                    ]
+                }),
+                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_MainItem_MainItemList__WEBPACK_IMPORTED_MODULE_1__/* .MainItemList */ .b, {
+                    items: items
+                })
+            ]
+        })
     });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Index);

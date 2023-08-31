@@ -1,16 +1,16 @@
-import {Requester} from "../utils/Requester";
+import {Requester} from "@/utils/Requester";
 import APIResponse, {response} from "../types/api.response";
-import {request} from "../types/api.request";
-import {APIConfig} from "../types/api.config";
+import {request} from "@/types/api.request";
+import {APIConfig} from "@/types/api.config";
 
 export class AuthService{
 
-    static async register(email: string, password: string, nickname: string, image: string): Promise<APIResponse<response.auth.register>> {
+    static async register(email: string, password: string, nickname: string, imageUrl?: string): Promise<APIResponse<response.auth.register>> {
         const data: request.auth.register = {
             email: email,
             password: password,
             nickname: nickname,
-            image: image
+            url: imageUrl
         }
         return await Requester.instance.request<typeof data, response.auth.register>(APIConfig.auth.register, data)
     }
@@ -23,18 +23,19 @@ export class AuthService{
         return await Requester.instance.request<typeof data, response.auth.signIn>(APIConfig.auth.signIn, data)
     }
 
-    static async requestCode(email: string): Promise<APIResponse<response.auth.requestCode>> {
+    static async requestCode(email: string): Promise<APIResponse<any>> {
         const data: request.auth.requestCode = {
             email: email
         }
-        return await Requester.instance.request<typeof data, response.auth.requestCode>(APIConfig.auth.requestCode, data)
+        return await Requester.instance.request<typeof data, any>(APIConfig.auth.requestCode, data)
     }
 
-    static async requestCodeSubmit(code: string): Promise<APIResponse<response.auth.requestCodeSubmit>> {
+    static async requestCodeSubmit(email: string,code: string): Promise<APIResponse<any>> {
         const data: request.auth.requestCodeSubmit = {
+            email: email,
             code: code
         }
-        return await Requester.instance.request<typeof data, response.auth.requestCodeSubmit>(APIConfig.auth.requestCodeSubmit, data)
+        return await Requester.instance.request<typeof data, any>(APIConfig.auth.requestCodeSubmit, data)
     }
 
 }

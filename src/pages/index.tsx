@@ -29,10 +29,6 @@ export const Index = ( { bestItem, items }: Props ) => {
 
     return (
         <>
-            <Head>
-                {/*<title>테스트</title>*/}
-            </Head>
-
             <Stack>
                 <Box
                     w={"100%"}

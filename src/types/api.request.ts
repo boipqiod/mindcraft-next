@@ -9,12 +9,13 @@ export namespace request {
             email: string
             password: string
             nickname: string
-            image?: string
+            url?: string // 이미지 url
         }
         export type requestCode = {
             email: string
         }
         export type requestCodeSubmit = {
+            email: string
             code: string
         }
     }

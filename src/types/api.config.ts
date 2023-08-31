@@ -25,16 +25,16 @@ export namespace APIConfig {
         }
         export const register: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/register",
+            url: "/auth/signup",
             contentType: httpContentType.form
         }
         export const requestCode: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/request-code"
+            url: "/auth/email"
         }
         export const requestCodeSubmit: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/request-code-submit"
+            url: "/auth/email/verify"
         }
     }
     export namespace test {
