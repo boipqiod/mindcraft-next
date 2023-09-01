@@ -5,6 +5,7 @@ import React from "react";
 import {useDetail} from "@/hooks/useDetail";
 import {useShare} from "@/hooks/utils/useShare";
 import {ContItem} from "@/components/MainItem/ContItem";
+import Head from "next/head";
 
 export const Detail = () => {
     const hook = useDetail()
@@ -16,6 +17,13 @@ export const Detail = () => {
     }
     return (
         <>
+            <Head>
+                <title>{`MindCraft: ${hook.item?.title}`}</title>
+                <meta property="og:description" content={hook.item?.description} />
+                <meta property="og:image" content={hook.item?.url} />
+
+            </Head>
+
             <Stack
                 pos={"relative"}
                 alignItems={"center"}

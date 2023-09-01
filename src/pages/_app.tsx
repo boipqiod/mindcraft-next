@@ -6,6 +6,9 @@ import {TestProvider} from "@/context/TestProvider";
 import {AuthProvider} from "@/context/AuthProvider";
 import Head from "next/head";
 
+import favicon from "@/assets/favicon.png";
+import image from "@/assets/demo.jpg";
+
 const theme = extendTheme({
     breakpoints: {
         sm: "300px",
@@ -35,6 +38,19 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <AuthProvider>
                     <AppLayout>
                         <Head>
+                            <title>MindCraft</title>
+                            <meta
+                                name="description"
+                                content="MindCraft is a web application that allows you to create test and share them with your friends!"
+                            />
+                            <meta property="og:description" content="MindCraft is a web application that allows you to create test and share them with your friends!" />
+
+                            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+                            <meta name="theme-color" content="#80A9A3" />
+                            <meta property="og:type" content="website"/>
+                            <link rel="icon" href={`${favicon.src}`} />
+                            <meta property="og:image" content={image.src} />
+
                             <link rel="manifest" href="/manifest.json" />
                         </Head>
                         <Component {...pageProps} />

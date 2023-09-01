@@ -3,6 +3,26 @@ exports.id = 212;
 exports.ids = [212];
 exports.modules = {
 
+/***/ 7061:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/demo.b66c3078.jpg","height":1787,"width":2965,"blurDataURL":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoKCgoKCgsMDAsPEA4QDxYUExMUFiIYGhgaGCIzICUgICUgMy03LCksNy1RQDg4QFFeT0pPXnFlZXGPiI+7u/sBCgoKCgoKCwwMCw8QDhAPFhQTExQWIhgaGBoYIjMgJSAgJSAzLTcsKSw3LVFAODhAUV5PSk9ecWVlcY+Ij7u7+//CABEIAAUACAMBIgACEQEDEQH/xAAoAAEBAAAAAAAAAAAAAAAAAAAABAEBAQAAAAAAAAAAAAAAAAAAAwX/2gAMAwEAAhADEAAAAJRDf//EABoQAQABBQAAAAAAAAAAAAAAAAERAAMjU+H/2gAIAQEAAT8AzQg2STX2v//EABgRAAIDAAAAAAAAAAAAAAAAAAAEAQJT/9oACAECAQE/AIda2sf/xAAZEQABBQAAAAAAAAAAAAAAAAAAAgMTU5H/2gAIAQMBAT8AharTh//Z","blurWidth":8,"blurHeight":5});
+
+/***/ }),
+
+/***/ 8860:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Z: () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({"src":"/_next/static/media/favicon.3a45a216.png","height":96,"width":96,"blurDataURL":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAA5klEQVR42j1PyWoCQRTs3+l8QojJ78RzlnMwh0SEkIWEaDCDK0rP9LgMLoiHmQ/Qo4oe1KM4LiBKNy2lPYIFBcVbqCqiMXcvqePE3CT/kZpaz70relp6IWpY74uwkcBdNoX7XAq3R/1/nPneDSWW/ey+cIbOcCAy7QaSTQfd0UDEyhwmj7gkYX7JiFmEUgo7IbDZbaERLXH8sg8ZHDyxAoSU8NcrzJYLqL3Cq20hzj5lYBG1TfQmY2G0aojXy+hPJ+KtYoNpC98LXZxC/uEhl8ZjPoPwOeQ1PdesBjW/paauqR8JIeQAfvutqmo28FwAAAAASUVORK5CYII=","blurWidth":8,"blurHeight":8});
+
+/***/ }),
+
 /***/ 7324:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -283,8 +303,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _context_AuthProvider__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(3523);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(968);
 /* harmony import */ var next_head__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(next_head__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _assets_favicon_png__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(8860);
+/* harmony import */ var _assets_demo_jpg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(7061);
 var __webpack_async_dependencies__ = __webpack_handle_async_dependencies__([_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__]);
 ([_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__, _chakra_ui_react__WEBPACK_IMPORTED_MODULE_3__] = __webpack_async_dependencies__.then ? (await __webpack_async_dependencies__)() : __webpack_async_dependencies__);
+
+
 
 
 
@@ -320,11 +344,44 @@ const MyApp = ({ Component, pageProps })=>{
             children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_context_AuthProvider__WEBPACK_IMPORTED_MODULE_5__/* .AuthProvider */ .H, {
                 children: /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_layout_AppLayout__WEBPACK_IMPORTED_MODULE_2__/* .AppLayout */ .L, {
                     children: [
-                        /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((next_head__WEBPACK_IMPORTED_MODULE_6___default()), {
-                            children: /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
-                                rel: "manifest",
-                                href: "/manifest.json"
-                            })
+                        /*#__PURE__*/ (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)((next_head__WEBPACK_IMPORTED_MODULE_6___default()), {
+                            children: [
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("title", {
+                                    children: "MindCraft"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    name: "description",
+                                    content: "MindCraft is a web application that allows you to create test and share them with your friends!"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    property: "og:description",
+                                    content: "MindCraft is a web application that allows you to create test and share them with your friends!"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    name: "viewport",
+                                    content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    name: "theme-color",
+                                    content: "#80A9A3"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    property: "og:type",
+                                    content: "website"
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                                    rel: "icon",
+                                    href: `${_assets_favicon_png__WEBPACK_IMPORTED_MODULE_7__/* ["default"] */ .Z.src}`
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("meta", {
+                                    property: "og:image",
+                                    content: _assets_demo_jpg__WEBPACK_IMPORTED_MODULE_8__/* ["default"] */ .Z.src
+                                }),
+                                /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("link", {
+                                    rel: "manifest",
+                                    href: "/manifest.json"
+                                })
+                            ]
                         }),
                         /*#__PURE__*/ react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(Component, {
                             ...pageProps

@@ -2,10 +2,10 @@
   "/_app": "pages/_app.js",
   "/auth/register": "pages/auth/register.html",
   "/auth/login": "pages/auth/login.html",
-  "/detail/[id]": "pages/detail/[id].html",
+  "/detail/[id]/play": "pages/detail/[id]/play.html",
   "/_error": "pages/_error.js",
   "/": "pages/index.js",
-  "/detail/[id]/play": "pages/detail/[id]/play.html",
+  "/detail/[id]": "pages/detail/[id].html",
   "/create": "pages/create.html",
   "/_document": "pages/_document.js",
   "/404": "pages/404.html"
