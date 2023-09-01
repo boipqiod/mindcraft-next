@@ -14,7 +14,6 @@ type Props = {
 };
 
 export const getStaticProps = async () => {
-
     const bestItem = dummyBest
     const items = dummy
 

@@ -2,9 +2,9 @@
   "version": 1,
   "functions": {
     "/auth/login": {},
-    "/detail/[id]": {},
-    "/": {},
     "/detail/[id]/play": {},
-    "/create": {}
+    "/create": {},
+    "/detail/[id]": {},
+    "/": {}
   }
 }

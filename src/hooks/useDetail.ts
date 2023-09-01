@@ -4,11 +4,10 @@ import {MindTestItem} from "@/types/common";
 import {useTest} from "./useTest";
 import {FromUtil} from "@/utils/FromUtil";
 import {usePage} from "./utils/usePage";
+import {GetServerSideProps} from "next";
 
-export const useDetail = () => {
-    const router = useRouter();
-    const query = router.query;
-    const id = query.id as string;
+
+export const useDetail = (id: string) => {
     const [item, setItem] = useState<MindTestItem>()
 
     const {getTestDetail} = useTest()
@@ -16,6 +15,8 @@ export const useDetail = () => {
 
     useEffect(()=>{
         window.scrollTo(0,0)
+
+        console.log(id)
 
         if(id && FromUtil.instance.checkNumber(id)){
             const _id = Number(id)

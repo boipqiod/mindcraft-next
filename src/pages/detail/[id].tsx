@@ -6,9 +6,15 @@ import {useDetail} from "@/hooks/useDetail";
 import {useShare} from "@/hooks/utils/useShare";
 import {ContItem} from "@/components/MainItem/ContItem";
 import Head from "next/head";
+import {GetServerSideProps} from "next";
 
-export const Detail = () => {
-    const hook = useDetail()
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const id = context.params?.id as string;
+    return { props: { id } };
+}
+
+export const Detail = (props: { id: string }) => {
+    const hook = useDetail(props.id)
     const {share} = useShare()
 
     const onShare = () => {
@@ -21,7 +27,6 @@ export const Detail = () => {
                 <title>{`MindCraft: ${hook.item?.title}`}</title>
                 <meta property="og:description" content={hook.item?.description} />
                 <meta property="og:image" content={hook.item?.url} />
-
             </Head>
 
             <Stack
