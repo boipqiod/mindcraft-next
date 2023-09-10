@@ -1,7 +1,7 @@
 import React from "react";
 import {Box} from "@chakra-ui/react";
 import {NavigationBar} from "./NavigationBar";
-import {withChildren} from "../types/common";
+import {withChildren} from "@/types/common";
 
 export const AppLayout = ({children}: withChildren) => {
     return (

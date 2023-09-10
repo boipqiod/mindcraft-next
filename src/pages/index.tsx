@@ -7,6 +7,7 @@ import React from "react";
 import {MainItemScrollList} from "@/components/MainItem/MainItemScrollList";
 import {useMain} from "@/hooks/useMain";
 import Head from "next/head";
+import TestItemController from "@/common/TestItemController";
 
 type Props = {
     bestItem: MindTestItem[];
@@ -16,6 +17,7 @@ type Props = {
 export const getStaticProps = async () => {
     const bestItem = dummyBest
     const items = dummy
+    TestItemController.instance.setTestItemList(items)
 
     return {
         props: { bestItem, items }

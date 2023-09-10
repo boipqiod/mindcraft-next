@@ -1,7 +1,7 @@
-import {request} from "../types/api.request";
-import {Requester} from "../utils/Requester";
-import {response} from "../types/api.response";
-import {APIConfig} from "../types/api.config";
+import {request} from "@/types/api.request";
+import {Requester} from "@/utils/Requester";
+import {response} from "@/types/api.response";
+import {APIConfig} from "@/types/api.config";
 
 export default class TestService{
 

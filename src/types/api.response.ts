@@ -42,7 +42,6 @@ export namespace response {
             playedCount: number
             sharedCount: number
             url: string // 이미지 url
-            createdAt: string
         }[]
 
         export type testItemDetail = {

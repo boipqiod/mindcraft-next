@@ -7,18 +7,18 @@ import {useShare} from "@/hooks/utils/useShare";
 import {ContItem} from "@/components/MainItem/ContItem";
 import Head from "next/head";
 import {GetServerSideProps} from "next";
-import StorageUtil from "@/utils/StorageUtil";
 import {MindTestItem} from "@/types/common";
+import TestItemController from "@/common/TestItemController";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
     const id = context.params?.id as string;
-    const items = StorageUtil.getTestItemList()
+    const items = TestItemController.instance.getTestItemList()
     const item = items.find(item => item.id === Number(id))
     return { props: { item, id } };
 }
 
 export const Detail = (props: { item: MindTestItem, id: string }) => {
-    const hook = useDetail(props.item props.id)
+    const hook = useDetail(props.item, props.id)
     const {share} = useShare()
 
     const onShare = () => {
