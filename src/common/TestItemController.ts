@@ -5,6 +5,7 @@ import TestService from "@/service/TestService";
 export default class TestItemController{
     static instance: TestItemController = new TestItemController()
 
+    time = new Date().getTime()
 
     private testItemList: MindTestItem[] = []
 
@@ -36,6 +37,7 @@ export default class TestItemController{
     }
 
     setTestItemList = (itemList: MindTestItem[]) => {
+        console.log(this.time)
         this.testItemList = itemList
     }
     getTestItemList = (): MindTestItem[] => {

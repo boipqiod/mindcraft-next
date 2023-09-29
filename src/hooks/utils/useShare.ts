@@ -9,6 +9,7 @@ export const useShare = () => {
                 .then(() => console.log('성공적으로 공유되었습니다.'))
                 .catch((error) => console.log('공유 중 오류가 발생했습니다.', error));
         } else {
+            await navigator.clipboard.writeText(url);
             alert('url이 복사되었습니다!');
         }
     }

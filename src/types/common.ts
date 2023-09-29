@@ -17,31 +17,30 @@ export type MindTestItem = {
     description: string;
     url: string;
     userId: number;
-}
+};
 
 export type MainTestBasicInfo = {
-    title: string,
-    description: string,
-    image: string,
-    resultCount: 3 | 4 | 5,
-    queryCount: 3 | 4 | 5,
-    answerCount: 2 | 3 | 4,
-}
+    title: string;
+    description: string;
+    image: string;
+    resultCount: 3 | 4 | 5;
+    queryCount: 3 | 4 | 5;
+    answerCount: 2 | 3 | 4;
+};
 
 export type MindTestResultItem = {
-    title: string
-    description: string
-    image: string
-}
-
+    title: string;
+    description: string;
+    image: string;
+};
 
 export type MindTestQueryItem = {
-    step: number
-    text: string
-    answers: MindTestAnswerItem[]
-}
+    step: number;
+    text: string;
+    answers: MindTestAnswerItem[];
+};
 
 export type MindTestAnswerItem = {
-    text: string
-    resultIndex: number
-}
+    text: string;
+    resultIndex: number;
+};

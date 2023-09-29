@@ -7,6 +7,7 @@ import {colors} from "@/types/common";
 import {usePage} from "@/hooks/utils/usePage";
 import {useShare} from "@/hooks/utils/useShare";
 import {ContItem} from "./ContItem";
+import {ExternalLinkIcon} from "@chakra-ui/icons";
 
 type MainItemProps = {
     id: number;
@@ -49,7 +50,19 @@ export const MainItem = (props: MainItemProps) => {
                 <Avatar width={5} height={5} src='https://bit.ly/broken-link'/>
                 <Text fontSize={"8px"} fontWeight={"bold"} px={1}>김민수</Text>
             </Box>
-            <Avatar onClick={onShare} bg={colors.key} p={1} w={7} h={7} src={i_share_d.src}/>
+            <Box
+                h={7}
+                w={7}
+                borderRadius={"50%"}
+                bg={colors.key}
+                display={"flex"}
+                alignItems={"center"}
+                justifyContent={"center"}
+                p={2}
+                onClick={onShare}
+            >
+                <ExternalLinkIcon />
+            </Box>
         </Box>
     }
 
@@ -58,8 +71,8 @@ export const MainItem = (props: MainItemProps) => {
         <Box
             pos={"relative"}
             aspectRatio={{base: 3/4.8, sm: 3/4.8}}
-            minW={{base: "100%", sm: "calc(100%/2 - 14px)", md: "calc(100%/3 - 16px)"}}
-            w={{base: "100%", sm: "calc(100%/2 - 14px)", md: "calc(100%/3 - 16px)"}}
+            minW={{base: "100%", sm: "calc(100%/2 - 14px)", md: "calc(100%/4 - 16px)"}}
+            w={{base: "100%", sm: "calc(100%/2 - 14px)", md: "calc(100%/4 - 16px)"}}
             boxShadow={"0px 4px 4px 0px rgba(0, 0, 0, 0.25);"}
             alignItems={"start"}
             borderRadius={4}

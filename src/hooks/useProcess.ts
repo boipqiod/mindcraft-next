@@ -19,7 +19,7 @@ export const useProcess = () => {
 
         //TODO : 완료가 된 상태 처리
         if(query.length === queryIndex + 1) {
-            console.log(selected)
+            console.(selected)
         }
 
     }

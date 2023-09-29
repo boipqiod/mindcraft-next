@@ -38,7 +38,7 @@ export const NavigationBar = () => {
             p={5}
             zIndex={10}
             w={"100%"}
-            maxW={720}
+            maxW={800}
             h={{base: "40px", md: "60px"}}
         >
             <Image

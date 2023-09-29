@@ -11,8 +11,8 @@ export const MainItemScrollList = (props: MainItemListProps) => {
     return (
         <Box
             display="flex"
-            overflow="auto"
-
+            justifyContent="space-between"
+            overflowX={"scroll"}
         >
             {props.items.map((item, index) => (
                 <MainItem

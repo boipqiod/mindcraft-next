@@ -10,17 +10,26 @@ type SelectionBadgeProps = {
 export const SelectionBadge = (props: SelectionBadgeProps) => {
 
     return (
-        <Box mt={10} mb={3}>
+        <Box
+            mt={10}
+            mb={3}
+
+        >
             {props.isSelected ?
                 <Badge
-                    boxShadow={"0px 4px 4px rgba(0, 0, 0, 0.25)"}
-                    fontSize={14} px={3} borderRadius={4} bg={colors.key} color={'white'} fontWeight={"bold"}>{props.children}</Badge> :
+                    boxShadow={"0px 4px 4px rgba(0, 0, 0, 0.1)"}
+                    fontSize={"1rem"} borderRadius={4} bg={colors.key} color={'white'} fontWeight={"bold"}
+                >{props.children}</Badge> :
                 <Badge
-                    boxShadow={"0px 4px 4px rgba(0, 0, 0, 0.25)"}
+                    boxShadow={"0px 4px 4px rgba(0, 0, 0, 0.1)"}
                     cursor={"pointer"}
                     onClick={props.onClick}
-                    fontSize={14} px={3} borderRadius={4} fontWeight={"normal"} >{props.children}
-
+                    transition={"all 0.5s"}
+                    _hover={{
+                        color: "white",
+                        backgroundColor: colors.key,
+                    }}
+                    fontSize={"1rem"} borderRadius={4} fontWeight={"normal"} >{props.children}
                 </Badge>
             }
         </Box>
