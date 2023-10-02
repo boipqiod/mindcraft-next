@@ -1,0 +1,36 @@
+name: Build and Push to Deploy Branch
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Prepare Deploy Branch
+        run: |
+          git checkout -b temp-deploy
+          git rm -r *  # 현재 디렉토리의 모든 파일 삭제
+          git restore --source=HEAD .next 
+          git add .next/
+          git commit -m "Keep only build artifacts"
+
+      - name: Push to Deploy Branch
+        run: |
+          git push origin +temp-deploy:deploy  

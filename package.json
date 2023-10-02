@@ -8,7 +8,7 @@
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "gh-pages -d .next -b build"
+    "deploy": "gh-pages -d build -b deploy"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.0",
