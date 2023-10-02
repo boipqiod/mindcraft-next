@@ -30,6 +30,6 @@ jobs:
 
       - name: Commit and Push Build Artifacts
         run: |
-          git add .next/
-          git commit -m "Keep only build artifacts" || true  # 이미 최신 상태라면 커밋을 건너뜀
+          git add -f .next/
+          git commit -m "Keep only build artifacts" || true
           git push origin deploy
