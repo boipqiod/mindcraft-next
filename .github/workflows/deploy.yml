@@ -26,7 +26,7 @@ jobs:
 
       - name: Remove All Files Except Build Artifacts
         run: |
-          find . -maxdepth 1 ! -name '.next' ! -name '.' ! -name '.git' -exec git rm -r {} +
+          find . -maxdepth 1 ! -name '.next' ! -name '.' ! -name '.git' -exec sh -c 'git ls-files -o --exclude-standard -z "$1" | xargs -0 git rm -r' sh {} \; || true
 
       - name: Commit and Push Build Artifacts
         run: |
