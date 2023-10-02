@@ -1,7 +1,11 @@
 export default class AnimationUtil {
-
-    static smoothScroll = (element: HTMLElement | null, targetX: number, targetY: number, duration: number): Promise<void> => {
-        if(!element) return Promise.resolve()
+    static smoothScroll = (
+        element: HTMLElement | null,
+        targetX: number,
+        targetY: number,
+        duration: number
+    ): Promise<void> => {
+        if (!element) return Promise.resolve();
 
         targetX = Math.round(targetX);
         targetY = Math.round(targetY);
@@ -10,7 +14,7 @@ export default class AnimationUtil {
         if (duration === 0) {
             element.scrollLeft = targetX;
             element.scrollTop = targetY;
-            return Promise.resolve()
+            return Promise.resolve();
         }
 
         const start_time = Date.now();
@@ -35,7 +39,7 @@ export default class AnimationUtil {
         let previous_left = element.scrollLeft;
         let previous_top = element.scrollTop;
 
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             const scrollFrame = () => {
                 const now = Date.now();
                 const point = smoothStep(start_time, end_time, now);
@@ -45,7 +49,7 @@ export default class AnimationUtil {
                 element.scrollTop = frameTop;
 
                 if (now >= end_time) {
-                    resolve()
+                    resolve();
                     return;
                 }
                 if (
@@ -53,7 +57,7 @@ export default class AnimationUtil {
                     element.scrollTop === previous_top &&
                     (element.scrollLeft !== frameLeft || element.scrollTop !== frameTop)
                 ) {
-                    resolve()
+                    resolve();
                     return;
                 }
                 previous_left = element.scrollLeft;
@@ -65,9 +69,7 @@ export default class AnimationUtil {
         });
     };
 
-
     static smoothScrollWindow = (targetX: number, targetY: number, duration: number): Promise<void> => {
-
         const startX = window.scrollX;
         const startY = window.scrollY;
         const distanceX = targetX - startX;
@@ -80,11 +82,11 @@ export default class AnimationUtil {
                 top: startY,
                 behavior: "auto"
             });
-            return Promise.resolve()
+            return Promise.resolve();
         }
         const preventScroll = (event: Event) => {
             event.preventDefault();
-        }
+        };
 
         return new Promise((resolve) => {
             const animationFrame = (time: number) => {
@@ -103,16 +105,15 @@ export default class AnimationUtil {
                 if (timeFraction < 1) {
                     requestAnimationFrame(animationFrame);
                 } else {
-                    window.removeEventListener('wheel', preventScroll);
-                    window.removeEventListener('touchstart', preventScroll);
+                    window.removeEventListener("wheel", preventScroll);
+                    window.removeEventListener("touchstart", preventScroll);
                     resolve();
                 }
             };
 
-            window.addEventListener('wheel', preventScroll, { passive: false });
-            window.addEventListener('touchstart', preventScroll, { passive: false });
+            window.addEventListener("wheel", preventScroll, { passive: false });
+            window.addEventListener("touchstart", preventScroll, { passive: false });
             requestAnimationFrame(animationFrame);
         });
     };
-
 }

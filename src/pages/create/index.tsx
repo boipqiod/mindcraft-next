@@ -30,8 +30,7 @@ export const Create = () => {
                         direction={{ base: "column", md: "row" }}
                         w={"full"}
                         alignItems={"flex-start"}
-                        mb={{ base: 5, md: 10 }}
-                    >
+                        mb={{ base: 5, md: 10 }}>
                         {/*타이틀 및 텍스트 영역*/}
                         <Stack m={2} w={"full"}>
                             <Text fontSize={"lg"}>테스트 제목</Text>
@@ -47,20 +46,13 @@ export const Create = () => {
                                 onChange={hook.handleBasicInfoInput}
                                 value={hook.basicInfo.description}
                                 rows={12}
-                                placeholder={
-                                    "심리테스트에 대한 설명을 입력해주세요."
-                                }
+                                placeholder={"심리테스트에 대한 설명을 입력해주세요."}
                             />
                         </Stack>
                         <Stack m={2} w={"full"} alignItems={"flex-start"}>
                             <Text fontSize={"lg"}>테스트 이미지</Text>
                             {/*이미지 인풋*/}
-                            <FormLabel
-                                w={"full"}
-                                aspectRatio={3 / 4}
-                                borderRadius={4}
-                                bg={"gray.200"}
-                            >
+                            <FormLabel w={"full"} aspectRatio={3 / 4} borderRadius={4} bg={"gray.200"}>
                                 {/*이미지 및 프리뷰*/}
                                 {hook.basicInfo.image !== "" ? (
                                     <Image
@@ -79,8 +71,7 @@ export const Create = () => {
                                         alignItems={"center"}
                                         justifyContent={"center"}
                                         textAlign={"center"}
-                                        color={"gray.400"}
-                                    >
+                                        color={"gray.400"}>
                                         <Text>
                                             이미지를 업로드해주세요.
                                             <br />
@@ -101,20 +92,13 @@ export const Create = () => {
                     </Stack>
 
                     {/*숫자에 대한 값*/}
-                    <Stack
-                        w={"full"}
-                        direction={{ base: "column", md: "row" }}
-                        mb={{ base: 5, md: 10 }}
-                    >
+                    <Stack w={"full"} direction={{ base: "column", md: "row" }} mb={{ base: 5, md: 10 }}>
                         <Stack w={"full"}>
                             <HStack>
                                 <Text>결과 수</Text>
                                 <Tooltip
                                     mx={10}
-                                    label={
-                                        "테스트 진행 후 사용자에게 보여질 수 있는 결과 수 입니다.(3~5개)"
-                                    }
-                                >
+                                    label={"테스트 진행 후 사용자에게 보여질 수 있는 결과 수 입니다.(3~5개)"}>
                                     <InfoOutlineIcon />
                                 </Tooltip>
                             </HStack>
@@ -132,12 +116,7 @@ export const Create = () => {
                         <Stack w={"full"}>
                             <HStack>
                                 <Text>질문 수</Text>
-                                <Tooltip
-                                    mx={10}
-                                    label={
-                                        "사용자가 진행할 질문 수입니다. (3~5개)"
-                                    }
-                                >
+                                <Tooltip mx={10} label={"사용자가 진행할 질문 수입니다. (3~5개)"}>
                                     <InfoOutlineIcon />
                                 </Tooltip>
                             </HStack>
@@ -154,12 +133,7 @@ export const Create = () => {
                         <Stack w={"full"}>
                             <HStack>
                                 <Text>응답 수</Text>
-                                <Tooltip
-                                    mx={10}
-                                    label={
-                                        "사용자가 진행할 질문의 대답의 수입니다. (2~4개)"
-                                    }
-                                >
+                                <Tooltip mx={10} label={"사용자가 진행할 질문의 대답의 수입니다. (2~4개)"}>
                                     <InfoOutlineIcon />
                                 </Tooltip>
                             </HStack>
@@ -192,46 +166,33 @@ export const Create = () => {
                                 key={index}
                                 onClick={() => hook.setResultScroll(index)}
                                 cursor={"pointer"}
-                                colorScheme={
-                                    hook.resultShowIndex === index
-                                        ? "blue"
-                                        : "gray"
-                                }
-                            >
+                                colorScheme={hook.resultShowIndex === index ? "blue" : "gray"}>
                                 {index + 1}
                             </Tag>
                         );
                     })}
                 </HStack>
 
-                <Stack
-                    width={"full"}
-                    overflow={"hidden"}
-                    id={"result-item-list"}
-                >
+                <Stack width={"full"} overflow={"hidden"} id={"result-item-list"}>
                     <Stack
                         direction={"row"}
                         w={`calc(100% * ${hook.resultItems.length})`}
                         alignItems={"flex-start"}
-                        mb={{ base: 5, md: 10 }}
-                    >
+                        mb={{ base: 5, md: 10 }}>
                         {hook.resultItems.map((item, index) => {
                             return (
                                 <Stack
                                     key={index}
                                     // hidden={hook.resultShowIndex !== index}
                                     id={`result-item-${index}`}
-                                    w={"100%"}
-                                >
+                                    w={"100%"}>
                                     <Text fontSize={"lg"}>결과 이름</Text>
                                     <Input
                                         id={"result-item-title"}
                                         onChange={hook.handleResultItemInput}
                                         data-index={index}
                                         value={hook.resultItems[index]?.title}
-                                        placeholder={
-                                            "심리테스트 제목을 입력해주세요."
-                                        }
+                                        placeholder={"심리테스트 제목을 입력해주세요."}
                                         mb={5}
                                     />
                                     <Text fontSize={"lg"}>결과 이미지</Text>
@@ -242,8 +203,7 @@ export const Create = () => {
                                             maxW={{ base: "full", md: "200px" }}
                                             aspectRatio={3 / 4}
                                             borderRadius={4}
-                                            bg={"gray.200"}
-                                        >
+                                            bg={"gray.200"}>
                                             {/*이미지 및 프리뷰*/}
                                             {hook.basicInfo.image !== "" ? (
                                                 <Image
@@ -251,10 +211,7 @@ export const Create = () => {
                                                     h={"full"}
                                                     objectFit={"cover"}
                                                     borderRadius={4}
-                                                    src={
-                                                        hook.resultItems[index]
-                                                            ?.image
-                                                    }
+                                                    src={hook.resultItems[index]?.image}
                                                     alt={"심리테스트 이미지"}
                                                 />
                                             ) : (
@@ -265,8 +222,7 @@ export const Create = () => {
                                                     alignItems={"center"}
                                                     justifyContent={"center"}
                                                     textAlign={"center"}
-                                                    color={"gray.400"}
-                                                >
+                                                    color={"gray.400"}>
                                                     <Text>
                                                         이미지를 업로드해주세요.
                                                         <br />
@@ -277,9 +233,7 @@ export const Create = () => {
 
                                             <Input
                                                 id={"result-item-image"}
-                                                onChange={
-                                                    hook.handleResultItemInput
-                                                }
+                                                onChange={hook.handleResultItemInput}
                                                 hidden={true}
                                                 type={"file"}
                                                 accept="image/*"
@@ -290,9 +244,7 @@ export const Create = () => {
 
                                     <Text fontSize={"lg"}>테스트 설명</Text>
                                     <QuillWrapper
-                                        value={
-                                            hook.resultItems[index]?.description
-                                        }
+                                        value={hook.resultItems[index]?.description}
                                         data-index={hook.resultShowIndex}
                                         onChange={hook.handleResultHtmlInput}
                                     />
@@ -316,12 +268,7 @@ export const Create = () => {
                                 key={index}
                                 onClick={() => hook.setQueryScroll(index)}
                                 cursor={"pointer"}
-                                colorScheme={
-                                    hook.queryShowIndex === index
-                                        ? "blue"
-                                        : "gray"
-                                }
-                            >
+                                colorScheme={hook.queryShowIndex === index ? "blue" : "gray"}>
                                 {index + 1}
                             </Tag>
                         );
@@ -338,94 +285,60 @@ export const Create = () => {
                         },
                         scrollbarWidth: "none",
                         msOverflowStyle: "none"
-                    }}
-                >
+                    }}>
                     <Stack
                         direction={"row"}
                         w={`calc(100% * ${hook.resultItems.length})`}
                         alignItems={"flex-start"}
-                        mb={{ base: 5, md: 10 }}
-                    >
+                        mb={{ base: 5, md: 10 }}>
                         {hook.resultItems.map((item, index) => {
                             return (
                                 <Stack
                                     key={index}
                                     // hidden={hook.resultShowIndex !== index}
                                     id={`result-item-${index}`}
-                                    w={"100%"}
-                                >
+                                    w={"100%"}>
                                     <Text fontSize={"lg"}>질문</Text>
                                     <Input
                                         id={"query-item-text"}
                                         onChange={hook.handleQueryItemInput}
                                         data-index={index}
                                         value={hook.queryItems[index]?.text}
-                                        placeholder={
-                                            "질문의 내용을 작성해주세요"
-                                        }
+                                        placeholder={"질문의 내용을 작성해주세요"}
                                         mb={5}
                                     />
 
-                                    <Text fontSize={"lg"}>
-                                        답변 / 영향을 주는 결과
-                                    </Text>
-                                    {hook.queryItems[index]?.answers.map(
-                                        (answer, answerIndex) => {
-                                            return (
-                                                <Stack
-                                                    key={answerIndex}
-                                                    w={"full"}
-                                                    direction={"row"}
-                                                    alignItems={"center"}
-                                                    mb={5}
-                                                >
-                                                    <Input
-                                                        id={"query-item-answer"}
-                                                        onChange={
-                                                            hook.handleQueryItemInput
-                                                        }
-                                                        data-index={answerIndex}
-                                                        value={
-                                                            hook.queryItems[
-                                                                index
-                                                                ]?.answers[
-                                                                answerIndex
-                                                                ]?.text
-                                                        }
-                                                        placeholder={
-                                                            "질문의 내용을 작성해주세요"
-                                                        }
-                                                    />
-                                                    <Select
-                                                        id={"query-item-result"}
-                                                        onChange={
-                                                            hook.handleQueryItemInput
-                                                        }
-                                                        data-index={answerIndex}
-                                                    >
-                                                        {hook.resultItems.map(
-                                                            (item, index) => {
-                                                                return (
-                                                                    <option
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        value={
-                                                                            index
-                                                                        }
-                                                                    >
-                                                                        {
-                                                                            item.title
-                                                                        }
-                                                                    </option>
-                                                                );
-                                                            }
-                                                        )}
-                                                    </Select>
-                                                </Stack>
-                                            );
-                                        }
-                                    )}
+                                    <Text fontSize={"lg"}>답변 / 영향을 주는 결과</Text>
+                                    {hook.queryItems[index]?.answers.map((answer, answerIndex) => {
+                                        return (
+                                            <Stack
+                                                key={answerIndex}
+                                                w={"full"}
+                                                direction={"row"}
+                                                alignItems={"center"}
+                                                mb={5}>
+                                                <Input
+                                                    id={"query-item-answer"}
+                                                    onChange={hook.handleQueryItemInput}
+                                                    data-index={answerIndex}
+                                                    value={hook.queryItems[index]?.answers[answerIndex]?.text}
+                                                    placeholder={"질문의 내용을 작성해주세요"}
+                                                />
+                                                <Select
+                                                    id={"query-item-result"}
+                                                    onChange={hook.handleQueryItemInput}
+                                                    data-index={answerIndex}>
+                                                    {hook.resultItems.map((item, index) => {
+                                                        return (
+                                                            <option key={index} value={index}>
+                                                                {item.title}
+                                                            </option>
+                                                        );
+                                                    })}
+                                                </Select>
+                                            </Stack>
+                                        );
+                                    })}
                                 </Stack>
                             );
                         })}

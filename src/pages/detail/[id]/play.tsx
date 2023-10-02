@@ -5,8 +5,6 @@ import { colors } from "@/types/common";
 export const Process = () => {
     const hook = useProcess();
 
-    const rat_ = () => {};
-
     return (
         <>
             <Stack width={"full"} overflow={"hidden"} id={"query-list"}>
@@ -20,12 +18,7 @@ export const Process = () => {
                         md: "calc(calc(100% - 720px)/2)"
                     }}
                     top={"25%"}>
-                    <Stack
-                        pos={"absolute"}
-                        h={"100%"}
-                        w={"100%"}
-                        bg={"gray.200"}
-                    />
+                    <Stack pos={"absolute"} h={"100%"} w={"100%"} bg={"gray.200"} />
                     <Stack
                         pos={"absolute"}
                         h={"100%"}
@@ -49,10 +42,7 @@ export const Process = () => {
                                 h={"calc(100vh - 110px)"}
                                 pos={"relative"}>
                                 <Stack h={"20%"} textAlign={"center"}>
-                                    <Flex
-                                        h={"100%"}
-                                        justifyContent={"center"}
-                                        alignItems={"center"}>
+                                    <Flex h={"100%"} justifyContent={"center"} alignItems={"center"}>
                                         <Text
                                             fontSize={{
                                                 base: "2xl",
@@ -73,9 +63,7 @@ export const Process = () => {
                                                 textAlign={"center"}
                                                 mb={2}
                                                 onClick={() => {
-                                                    hook.toNext(
-                                                        value.resultIndex
-                                                    );
+                                                    hook.toNext(value.resultIndex);
                                                 }}>
                                                 {value.text}
                                             </Button>

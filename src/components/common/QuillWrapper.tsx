@@ -1,6 +1,6 @@
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-export const QuillWrapper = dynamic(() => import('react-quill'), {
+export const QuillWrapper = dynamic(() => import("react-quill"), {
     ssr: false,
-    loading: () => <p>Loading ...</p>,
-})
+    loading: () => <p>Loading ...</p>
+});

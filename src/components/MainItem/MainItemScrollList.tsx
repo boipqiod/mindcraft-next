@@ -1,19 +1,14 @@
-import { Box } from '@chakra-ui/react';
-import { MindTestItem } from '../../types/common';
-import { MainItem } from './MainItem';
+import { Box } from "@chakra-ui/react";
+import { MindTestItem } from "@/types/common";
+import { MainItem } from "./MainItem";
 
 type MainItemListProps = {
     items: MindTestItem[];
-}
+};
 
 export const MainItemScrollList = (props: MainItemListProps) => {
-
     return (
-        <Box
-            display="flex"
-            justifyContent="space-between"
-            overflowX={"scroll"}
-        >
+        <Box display="flex" justifyContent="space-between" overflowX={"scroll"}>
             {props.items.map((item, index) => (
                 <MainItem
                     key={index}
@@ -25,5 +20,5 @@ export const MainItemScrollList = (props: MainItemListProps) => {
                 />
             ))}
         </Box>
-    )
-}
+    );
+};

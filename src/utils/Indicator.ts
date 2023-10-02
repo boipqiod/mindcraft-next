@@ -7,15 +7,14 @@ export class Indicator {
     }
     private static _instance: Indicator;
 
-    indicatorEle: HTMLDivElement
+    indicatorEle: HTMLDivElement;
 
     private constructor() {
-        this.indicatorEle = document.getElementById('indicator') as HTMLDivElement
+        this.indicatorEle = document.getElementById("indicator") as HTMLDivElement;
     }
 
-    setIndicator(show: boolean){
-        if(show) this.indicatorEle.style.display = "block"
-        else this.indicatorEle.style.display = "none"
+    setIndicator(show: boolean) {
+        if (show) this.indicatorEle.style.display = "block";
+        else this.indicatorEle.style.display = "none";
     }
 }
-

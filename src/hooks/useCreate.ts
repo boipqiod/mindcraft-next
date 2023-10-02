@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from "react";
-import {MainTestBasicInfo, MindTestAnswerItem, MindTestQueryItem, MindTestResultItem} from "@/types/common";
+import React, { useEffect, useState } from "react";
+import { MainTestBasicInfo, MindTestQueryItem, MindTestResultItem } from "@/types/common";
 import AnimationUtil from "../utils/AnimationUtil";
 
 export const useCreate = () => {
-
     const [step, setStep] = useState(0);
 
     const [basicInfo, setBasicInfo] = React.useState<MainTestBasicInfo>({
@@ -12,7 +11,7 @@ export const useCreate = () => {
         image: "",
         resultCount: 3,
         queryCount: 3,
-        answerCount: 2,
+        answerCount: 2
     });
 
     //결과 정보
@@ -24,32 +23,29 @@ export const useCreate = () => {
     const [resultShowIndex, setResultShowIndex] = useState(0);
     const [queryShowIndex, setQueryShowIndex] = useState(0);
 
-    useEffect(() => {
-
-    }, [])
+    useEffect(() => {}, []);
 
     const basicInfoNext = () => {
         //TODO: 기본 정보 검증
 
-        initResultItems()
-        initQueryItems()
-        setStep(prevState => prevState + 1);
-    }
+        initResultItems();
+        initQueryItems();
+        setStep((prevState) => prevState + 1);
+    };
 
     const resultNext = () => {
         //TODO: 결과 정보 검증
 
-        setStep(prevState => prevState + 1);
-    }
+        setStep((prevState) => prevState + 1);
+    };
 
     const submit = () => {
         //TODO : 질문 정보 검증
 
-
-        console.log("basicInfo", basicInfo)
-        console.log("resultItems", resultItems)
-        console.log("queryItems", queryItems)
-    }
+        console.log("basicInfo", basicInfo);
+        console.log("resultItems", resultItems);
+        console.log("queryItems", queryItems);
+    };
 
     /**** 초기화 함수 ***/
     const initResultItems = () => {
@@ -58,11 +54,11 @@ export const useCreate = () => {
             items.push({
                 title: "",
                 description: "",
-                image: "",
+                image: ""
             });
         }
         setResultItems(items);
-    }
+    };
 
     const initQueryItems = () => {
         const items: MindTestQueryItem[] = [];
@@ -70,7 +66,7 @@ export const useCreate = () => {
             items.push({
                 step: i + 1,
                 text: "",
-                answers: [],
+                answers: []
             });
         }
 
@@ -78,20 +74,20 @@ export const useCreate = () => {
             for (let i = 0; i < basicInfo.answerCount; i++) {
                 queryItem.answers.push({
                     text: "",
-                    resultIndex: 0,
+                    resultIndex: 0
                 });
             }
-        })
+        });
 
         setQueryItems(items);
-    }
+    };
 
     /**** 이벤트 핸들러 ****/
     const handleBasicInfoInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const value = e.target.value;
-        setBasicInfo(prev => {
-            console.log(basicInfo)
-            const newInfo = {...prev};
+        setBasicInfo((prev) => {
+            console.log(basicInfo);
+            const newInfo = { ...prev };
             switch (e.target.id) {
                 case "title":
                     newInfo.title = value;
@@ -105,9 +101,9 @@ export const useCreate = () => {
                     if (file) {
                         const reader = new FileReader();
                         reader.onloadend = () => {
-                            setBasicInfo(prev => ({
+                            setBasicInfo((prev) => ({
                                 ...prev,
-                                image: reader.result as string,
+                                image: reader.result as string
                             }));
                         };
                         reader.readAsDataURL(file);
@@ -135,14 +131,14 @@ export const useCreate = () => {
 
             return newInfo;
         });
-    }
+    };
 
     const handleResultItemInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const _index = e.target.dataset.index;
         const index = Number(_index);
 
         const value = e.target.value;
-        setResultItems(prev => {
+        setResultItems((prev) => {
             const newItems = [...prev];
             switch (e.target.id) {
                 case "result-item-title":
@@ -163,14 +159,14 @@ export const useCreate = () => {
             }
             return newItems;
         });
-    }
+    };
 
     const handleQueryItemInput = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const _index = e.target.dataset.index;
         const index = Number(_index);
 
         const value = e.target.value;
-        setQueryItems(prev => {
+        setQueryItems((prev) => {
             const newItems = [...prev];
             switch (e.target.id) {
                 case "query-item-text":
@@ -184,48 +180,46 @@ export const useCreate = () => {
                     break;
             }
 
-            console.log(newItems)
+            console.log(newItems);
 
             return newItems;
         });
-    }
+    };
 
     const handleResultHtmlInput = (value: string) => {
-        setResultItems(prev => {
+        setResultItems((prev) => {
             const newItems = [...prev];
             newItems[resultShowIndex].description = value;
             return newItems;
-        })
+        });
     };
-
 
     /**** 기타 함수 ****/
     const setResultScroll = async (index: number) => {
         setResultShowIndex(index);
-        await new Promise(resolve => setTimeout(resolve, 0)); // 상태 업데이트를 기다림
+        await new Promise((resolve) => setTimeout(resolve, 0)); // 상태 업데이트를 기다림
 
-        const target = document.getElementById('result-item-list')
+        const target = document.getElementById("result-item-list");
         if (!target) {
             console.error("Element not found");
             return;
         }
 
-        await AnimationUtil.smoothScroll(target, target.offsetWidth * index, 0, 300)
-    }
+        await AnimationUtil.smoothScroll(target, target.offsetWidth * index, 0, 300);
+    };
 
     const setQueryScroll = async (index: number) => {
         setQueryShowIndex(index);
-        await new Promise(resolve => setTimeout(resolve, 0)); // 상태 업데이트를 기다림
+        await new Promise((resolve) => setTimeout(resolve, 0)); // 상태 업데이트를 기다림
 
-        const target = document.getElementById('query-item-list')
+        const target = document.getElementById("query-item-list");
         if (!target) {
             console.error("Element not found");
             return;
         }
 
-        await AnimationUtil.smoothScroll(target, target.offsetWidth * index, 0, 300)
-    }
-
+        await AnimationUtil.smoothScroll(target, target.offsetWidth * index, 0, 300);
+    };
 
     return {
         basicInfo,
@@ -236,11 +230,15 @@ export const useCreate = () => {
         handleQueryItemInput,
         handleResultHtmlInput,
 
-        resultShowIndex, setResultScroll,
-        queryShowIndex, setQueryScroll,
+        resultShowIndex,
+        setResultScroll,
+        queryShowIndex,
+        setQueryScroll,
 
         step,
 
-        basicInfoNext, resultNext, submit
+        basicInfoNext,
+        resultNext,
+        submit
     };
-}
+};

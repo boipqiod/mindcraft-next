@@ -5,11 +5,7 @@ import { usePage } from "./utils/usePage";
 import { AuthService } from "@/service/AuthService";
 import Logger from "../utils/Logger";
 
-const steps = [
-    { description: "이메일 인증" },
-    { description: "인증 번호 입력" },
-    { description: "기타 정보 입력" }
-];
+const steps = [{ description: "이메일 인증" }, { description: "인증 번호 입력" }, { description: "기타 정보 입력" }];
 
 export const useRegister = () => {
     const { activeStep, setActiveStep } = useSteps({
@@ -27,8 +23,7 @@ export const useRegister = () => {
     const [image, setImage] = useState<string>("");
 
     const [loadingEmailCode, setLoadingEmailCode] = useState<boolean>(false);
-    const [loadingEmailCodeSubmit, setLoadingEmailCodeSubmit] =
-        useState<boolean>(false);
+    const [loadingEmailCodeSubmit, setLoadingEmailCodeSubmit] = useState<boolean>(false);
     const [loadingRegister, setLoadingRegister] = useState<boolean>(false);
 
     const toNextStep = () => {
@@ -74,13 +69,7 @@ export const useRegister = () => {
         const validNickname3 = FromUtil.instance.checkNickname("닉네임");
         const validNickname4 = FromUtil.instance.checkNickname("닉네임112");
 
-        Logger.info(
-            validNickname,
-            validNickname1,
-            validNickname2,
-            validNickname3,
-            validNickname4
-        );
+        Logger.info(validNickname, validNickname1, validNickname2, validNickname3, validNickname4);
 
         if (!validNickname) {
             alert("닉네임 형식이 올바르지 않습니다. (2~10자)");
@@ -106,9 +95,7 @@ export const useRegister = () => {
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
     };
-    const handlePasswordCheckChange = (
-        e: React.ChangeEvent<HTMLInputElement>
-    ) => {
+    const handlePasswordCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPasswordCheck(e.target.value);
     };
     const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,10 +1,5 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
 import { MindTestItem } from "@/types/common";
-import { useTest } from "./useTest";
-import { FromUtil } from "@/utils/FromUtil";
 import { usePage } from "./utils/usePage";
-import { GetServerSideProps } from "next";
 import { useShare } from "@/hooks/utils/useShare";
 
 export const useDetail = (item: MindTestItem, id: string) => {

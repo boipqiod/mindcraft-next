@@ -1,16 +1,16 @@
-import {MindTestItem} from "@/types/common";
+import { MindTestItem } from "@/types/common";
 
-export default class StorageUtil{
+export default class StorageUtil {
     static saveTestItemList = (itemList: MindTestItem[]) => {
-        window.sessionStorage.setItem("testItemList", JSON.stringify(itemList))
-    }
+        window.sessionStorage.setItem("testItemList", JSON.stringify(itemList));
+    };
 
     static getTestItemList = (): MindTestItem[] => {
-        const testItemList = window.sessionStorage.getItem("testItemList")
-        if(testItemList){
-            return JSON.parse(testItemList)
-        }else{
-            return []
+        const testItemList = window.sessionStorage.getItem("testItemList");
+        if (testItemList) {
+            return JSON.parse(testItemList);
+        } else {
+            return [];
         }
-    }
+    };
 }
