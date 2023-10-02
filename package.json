@@ -8,7 +8,7 @@
     "export": "next export",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "gh-pages -d .next -b mindcraft-web"
+    "deploy": "gh-pages -d .next -b build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.0",
