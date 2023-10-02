@@ -4,23 +4,31 @@ import { dummy, dummyBest } from "@/utils/dummy";
 import { colors, MindTestItem } from "@/types/common";
 import { SelectionBadge } from "@/components/common/SelectionBadge";
 import React from "react";
+import { GetServerSideProps } from "next";
 import { MainItemScrollList } from "@/components/MainItem/MainItemScrollList";
 import { useMain } from "@/hooks/useMain";
-import TestItemController from "@/common/TestItemController";
 import { SmallAddIcon } from "@chakra-ui/icons";
+import TestService from "@/service/TestService";
 
 type Props = {
     bestItem: MindTestItem[];
     items: MindTestItem[];
 };
 
-export const getStaticProps = async () => {
-    const bestItem = dummyBest;
-    const items = dummy;
-    TestItemController.instance.setTestItemList(items);
+export const getServerSideProps: GetServerSideProps = async () => {
+    const res = await TestService.getTestList();
+
+    if (res.isSuccess && res.data) {
+        return {
+            props: {
+                bestItem: res.data,
+                items: res.data
+            }
+        };
+    }
 
     return {
-        props: { bestItem, items }
+        props: {}
     };
 };
 
@@ -33,12 +41,7 @@ export const Index = ({ bestItem, items }: Props) => {
                 <Box w={"100%"}>
                     <HStack justify={"space-between"} align={"end"}>
                         <SelectionBadge isSelected>추천 리스트</SelectionBadge>
-                        <Button
-                            size={"sm"}
-                            color={"white"}
-                            bg={colors.key}
-                            onClick={main.toCreate}
-                        >
+                        <Button size={"sm"} color={"white"} bg={colors.key} onClick={main.toCreate}>
                             <SmallAddIcon />
                         </Button>
                     </HStack>
@@ -50,24 +53,21 @@ export const Index = ({ bestItem, items }: Props) => {
                         onClick={() => {
                             main.setSelectedIndex(0);
                         }}
-                        isSelected={main.selectedIndex === 0}
-                    >
+                        isSelected={main.selectedIndex === 0}>
                         최신
                     </SelectionBadge>
                     <SelectionBadge
                         onClick={() => {
                             main.setSelectedIndex(1);
                         }}
-                        isSelected={main.selectedIndex === 1}
-                    >
+                        isSelected={main.selectedIndex === 1}>
                         베스트
                     </SelectionBadge>
                     <SelectionBadge
                         onClick={() => {
                             main.setSelectedIndex(2);
                         }}
-                        isSelected={main.selectedIndex === 2}
-                    >
+                        isSelected={main.selectedIndex === 2}>
                         최다 공유
                     </SelectionBadge>
                 </ButtonGroup>

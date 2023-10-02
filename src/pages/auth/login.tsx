@@ -1,47 +1,26 @@
-import React from "react";
-import {
-    Button,
-    Heading,
-    Input,
-    InputGroup,
-    InputRightElement,
-    Box,
-    Text
-} from "@chakra-ui/react";
+import React, { useEffect } from "react";
+import { Box, Button, Heading, Input, Text, InputGroup, InputRightElement } from "@chakra-ui/react";
 import { useLogin } from "@/hooks/useLogin";
 import { usePage } from "@/hooks/utils/usePage";
 import { colors } from "@/types/common";
 
 export const Login = () => {
     const hook = useLogin();
-    const { toRegister } = usePage();
-    const [email, setEmail] = React.useState<string>("");
-    const [password, setPassword] = React.useState<string>("");
+    const { toRegister, toMain } = usePage();
 
-    const emailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-    const passwordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
-    const submit = () => {
-        hook.signIn(email, password);
-    };
+    useEffect(() => {
+        hook.isAuthenticated && toMain().then();
+    }, [hook.isAuthenticated, toMain]);
 
     return (
         <Box
             maxW={"300px"}
-            width={"80%"}
             mx={"auto"}
             display={"flex"}
             flexDirection={"column"}
             justifyContent={"center"}
-            alignItems={"center"}
-        >
-            <Heading my={18}>
-                로그인
-            </Heading>
+            alignItems={"center"}>
+            <Heading my={18}>로그인</Heading>
             <Text width={"100%"} textAlign={"left"}>
                 이메일
             </Text>
@@ -51,8 +30,8 @@ export const Login = () => {
                 placeholder="mindcraft@example.com"
                 mb={8}
                 type="email"
-                value={email}
-                onChange={emailChange}
+                name={"email"}
+                onChange={hook.handleInputChange}
             />
             {/*비밀버호 입력*/}
             <Text width={"100%"} textAlign={"left"}>
@@ -63,19 +42,19 @@ export const Login = () => {
                 <Input
                     fontSize={"1.2rem"}
                     pr={"4.5rem"}
-                    type={hook.show ? "text" : "password"}
+                    type={hook.showPassword ? "text" : "password"}
                     placeholder="Enter password"
-                    value={password}
-                    onChange={passwordChange}
+                    name={"password"}
+                    onChange={hook.handleInputChange}
                 />
                 {/*보이기 버튼*/}
                 <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={hook.handleClick}>
-                        {hook.show ? "Hide" : "Show"}
+                    <Button h="1.75rem" size="sm" onClick={hook.handleClickShowPassword}>
+                        {hook.showPassword ? "Hide" : "Show"}
                     </Button>
                 </InputRightElement>
             </InputGroup>
-            <Button onClick={submit} bg={colors.primary} width={"100%"} mb={5}>
+            <Button onClick={hook.signIn} bg={colors.primary} width={"100%"} mb={5}>
                 로그인
             </Button>
             <Button onClick={toRegister} fontWeight={"normal"} variant={"link"}>

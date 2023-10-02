@@ -7,8 +7,7 @@ export class FromUtil {
     }
     private static _instance: FromUtil;
 
-    private constructor() {
-    }
+    private constructor() {}
 
     checkEmail(email: string): boolean {
         const emailRegExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;

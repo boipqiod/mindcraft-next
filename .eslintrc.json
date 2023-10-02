@@ -30,7 +30,7 @@
         "bracketSpacing": true,
         "trailingComma": "none",
         "jsxBracketSameLine": true,
-        "printWidth": 80
+        "printWidth": 120
       }
     ],
     "object-curly-spacing": "off"

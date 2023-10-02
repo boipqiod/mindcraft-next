@@ -1,7 +1,13 @@
 import {
-    Button, FormControl, FormLabel,
-    Heading, HStack, Image,
-    Input, PinInput, PinInputField,
+    Button,
+    FormControl,
+    FormLabel,
+    Heading,
+    HStack,
+    Image,
+    Input,
+    PinInput,
+    PinInputField,
     Stack,
     Step,
     StepIcon,
@@ -12,12 +18,12 @@ import {
     Text
 } from "@chakra-ui/react";
 import React from "react";
-import {useRegister} from "@/hooks/useRegister";
-import {colors} from "@/types/common";
+import { useRegister } from "@/hooks/useRegister";
+import { colors } from "@/types/common";
 
 export function Register() {
-    const register = useRegister()
-    const activeStepText = register.steps[register.activeStep].description
+    const register = useRegister();
+    const activeStepText = register.steps[register.activeStep].description;
 
     const firstStep = () => {
         return (
@@ -26,9 +32,9 @@ export function Register() {
                     <FormLabel>이메일</FormLabel>
                     {/*이메일 입력*/}
                     <Input
-                        placeholder='mindcraft@example.com'
+                        placeholder="mindcraft@example.com"
                         mb={3}
-                        type='email'
+                        type="email"
                         value={register.email}
                         onChange={register.handleEmailChange}
                     />
@@ -37,62 +43,58 @@ export function Register() {
                         color={"white"}
                         bg={colors.key}
                         onClick={register.requestCodeSend}
-                        isLoading={register.loadingEmailCode}
-                    >
-                        인증 메일 발송</Button>
+                        isLoading={register.loadingEmailCode}>
+                        인증 메일 발송
+                    </Button>
                 </FormControl>
             </>
-        )
-    }
+        );
+    };
     const secondStep = () => {
         return (
             <Stack>
                 {/*이메일 코드 입력*/}
-                <FormControl display={"flex"} flexDirection={'column'} justifyContent={"center"} isRequired>
+                <FormControl display={"flex"} flexDirection={"column"} justifyContent={"center"} isRequired>
                     <FormLabel>인증 번호</FormLabel>
                     <HStack>
-                        <PinInput
-                            onComplete={register.requestCodeSubmit}
-                            isDisabled={register.loadingEmailCodeSubmit}
-                        >
-                            <PinInputField/>
-                            <PinInputField/>
-                            <PinInputField/>
-                            <PinInputField/>
+                        <PinInput onComplete={register.requestCodeSubmit} isDisabled={register.loadingEmailCodeSubmit}>
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
+                            <PinInputField />
                         </PinInput>
                     </HStack>
                 </FormControl>
             </Stack>
-        )
-    }
+        );
+    };
     const thirdStep = () => {
         return (
             <>
                 <HStack width={"full"} justifyContent={"space-between"}>
-
                     <Stack width={"55%"} display={"flex"} alignItems={"center"}>
                         <FormControl isRequired>
                             <FormLabel>비밀번호</FormLabel>
                             {/*비밀번호 입력*/}
                             <Input
-                                placeholder='비밀번호'
+                                placeholder="비밀번호"
                                 mb={3}
-                                type='password'
+                                type="password"
                                 value={register.password}
                                 onChange={register.handlePasswordChange}
                             />
                             <Input
-                                placeholder='비밀번호 확인'
+                                placeholder="비밀번호 확인"
                                 mb={3}
-                                type='password'
+                                type="password"
                                 value={register.passwordCheck}
                                 onChange={register.handlePasswordCheckChange}
                             />
                             <FormLabel>닉네임</FormLabel>
                             <Input
-                                placeholder='닉네임'
+                                placeholder="닉네임"
                                 mb={3}
-                                type='text'
+                                type="text"
                                 value={register.nickname}
                                 onChange={register.handleNicknameChange}
                             />
@@ -103,7 +105,7 @@ export function Register() {
                         <FormControl>
                             <FormLabel boxSize={"full"}>
                                 프로필 이미지
-                                <Image src='gibbresh.png' fallbackSrc='https://via.placeholder.com/150'/>
+                                <Image src="gibbresh.png" fallbackSrc="https://via.placeholder.com/150" />
                             </FormLabel>
                             {/*비밀번호 입력*/}
                             <Input
@@ -115,57 +117,50 @@ export function Register() {
                             />
                         </FormControl>
                     </Stack>
-
                 </HStack>
                 <Button
                     width={"100%"}
                     color={"white"}
                     bg={colors.key}
                     onClick={register.requestRegister}
-                    isLoading={register.loadingRegister}
-                >
-                    회원 가입 요청</Button>
+                    isLoading={register.loadingRegister}>
+                    회원 가입 요청
+                </Button>
             </>
-        )
-    }
+        );
+    };
 
     return (
-        <Stack
-            maxW={"400px"}
-            width={"80%"}
-            height={"80%"}
-            mx={"auto"}
-            my={"8vh"}
-            direction={"column"}
-            alignItems={"center"}
-        >
-            <Stack
-                width={"100%"}
-            >
-                <Text width={"100%"} textAlign={"center"}>{activeStepText}</Text>
+        <Stack maxW={"400px"} mx={"auto"} my={"8vh"} direction={"column"} alignItems={"center"}>
+            <Stack width={"100%"}>
+                <Text width={"100%"} textAlign={"center"}>
+                    {activeStepText}
+                </Text>
 
-                <Stepper size='sm' index={register.activeStep} gap='1'>
+                <Stepper size="sm" index={register.activeStep} gap="1">
                     {register.steps.map((step, index) => (
                         <Step key={index}>
                             <StepIndicator>
-                                <StepStatus complete={<StepIcon/>}/>
+                                <StepStatus complete={<StepIcon />} />
                             </StepIndicator>
-                            <StepSeparator/>
+                            <StepSeparator />
                         </Step>
                     ))}
                 </Stepper>
-
             </Stack>
 
-            <Heading width={"full"} textAlign={"center"} my={30}>회원 가입</Heading>
-            {
-                register.activeStep === 0 ? firstStep() :
-                    register.activeStep === 1 ? secondStep() :
-                        register.activeStep === 2 ? thirdStep() : null
-            }
+            <Heading width={"full"} textAlign={"center"} my={30}>
+                회원 가입
+            </Heading>
+            {register.activeStep === 0
+                ? firstStep()
+                : register.activeStep === 1
+                ? secondStep()
+                : register.activeStep === 2
+                ? thirdStep()
+                : null}
         </Stack>
-    )
-
+    );
 }
 
-export default Register
+export default Register;

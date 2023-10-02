@@ -1,41 +1,61 @@
-import React, {useEffect} from "react";
-import {AuthContext} from "../context/AuthProvider";
-import {usePage} from "./utils/usePage";
-import {AuthService} from "../service/AuthService";
+import React from "react";
+import { usePage } from "./utils/usePage";
+import { AuthService } from "@/service/AuthService";
+import { AppDispatch, RootState } from "@/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { User } from "@/types/common";
+import { login, logout } from "@/redux/auth/authAction";
 
 export const useLogin = () => {
-    const {auth, setAuth} = React.useContext(AuthContext)!
-    const [show, setShow] = React.useState(false)
-    const {toMain} = usePage()
+    const dispatch = useDispatch<AppDispatch>();
+    const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
+    const [showPassword, setShowPassword] = React.useState(false);
+    const { toMain } = usePage();
 
-    useEffect(() => {
-        auth && toMain()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    const [form, setForm] = React.useState({
+        email: "",
+        password: ""
+    });
 
-    const handleClick = () => setShow(!show)
+    const handleClickShowPassword = () => setShowPassword(!showPassword);
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setForm({
+            ...form,
+            [name]: value
+        });
+    };
 
-    const signIn = async (email: string, password: string) => {
+    const signIn = async () => {
+        const res = await AuthService.signIn(form.email, form.password);
+        if (res.isSuccess && res.data) {
+            const user: User = {
+                email: form.email,
+                id: res.data.id,
+                nickname: res.data.nickname,
+                imageUrl: res.data.imageUrl
+            };
 
-        const res = await AuthService.signIn(email, password)
-        if(res.isSuccess){
-            setAuth(true)
-            toMain()
+            dispatch(login(user));
+            await toMain();
         } else {
-            //TODO: 각 에러에 맞는 메시지 출력
-            alert(`로그인이 실패하였습니다.\n${res.message}`)
+            alert(`아이디와 비밀번호를 확인해주세요.`);
         }
-    }
+    };
 
     const signOut = () => {
-
-    }
+        dispatch(logout());
+        toMain().then();
+    };
 
     return {
-        show, setShow,
+        showPassword,
+        isAuthenticated,
 
-        handleClick,
-        signIn, signOut
-    }
-}
+        handleInputChange,
+        handleClickShowPassword,
+        signIn,
+        signOut
+    };
+};

@@ -4,8 +4,17 @@ export type withChildren = { children: React.ReactNode };
 
 export enum colors {
     primary = "#80A9A3",
-    key = "#F5C31F",
+    key = "#F5C31F"
 }
+
+/**** 사용자 관련 ****/
+
+export type User = {
+    id: string;
+    email: string;
+    nickname: string;
+    imageUrl: string;
+};
 
 /**** 메인 아이템 관련 ****/
 

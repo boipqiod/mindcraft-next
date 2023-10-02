@@ -1,23 +1,23 @@
-import React, {useState} from "react";
-import {useSteps} from "@chakra-ui/react";
-import {FromUtil} from "@/utils/FromUtil";
-import {usePage} from "./utils/usePage";
-import {AuthService} from "@/service/AuthService";
+import React, { useState } from "react";
+import { useSteps } from "@chakra-ui/react";
+import { FromUtil } from "@/utils/FromUtil";
+import { usePage } from "./utils/usePage";
+import { AuthService } from "@/service/AuthService";
 import Logger from "../utils/Logger";
 
 const steps = [
-    {description: '이메일 인증'},
-    {description: '인증 번호 입력'},
-    {description: '기타 정보 입력'},
-]
+    { description: "이메일 인증" },
+    { description: "인증 번호 입력" },
+    { description: "기타 정보 입력" }
+];
 
 export const useRegister = () => {
-    const {activeStep, setActiveStep} = useSteps({
+    const { activeStep, setActiveStep } = useSteps({
         index: 0,
-        count: steps.length,
-    })
+        count: steps.length
+    });
 
-    const {toMain} = usePage()
+    const { toMain } = usePage();
 
     const [email, setEmail] = useState<string>("");
     const [emailCode, setEmailCode] = useState<string>("");
@@ -27,17 +27,15 @@ export const useRegister = () => {
     const [image, setImage] = useState<string>("");
 
     const [loadingEmailCode, setLoadingEmailCode] = useState<boolean>(false);
-    const [loadingEmailCodeSubmit, setLoadingEmailCodeSubmit] = useState<boolean>(false);
+    const [loadingEmailCodeSubmit, setLoadingEmailCodeSubmit] =
+        useState<boolean>(false);
     const [loadingRegister, setLoadingRegister] = useState<boolean>(false);
 
-
-
     const toNextStep = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1)
-    }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
 
     const requestCodeSend = () => {
-
         const validEmail = FromUtil.instance.checkEmail(email);
         if (!validEmail) {
             alert("이메일 형식이 올바르지 않습니다.");
@@ -49,19 +47,18 @@ export const useRegister = () => {
         //인증 코드 입력창 보이기
         toNextStep();
         setLoadingRegister(false);
-    }
+    };
 
     const requestCodeSubmit = (value: string) => {
         //TODO: 이메일 인증 코드 확인 요청
-        setLoadingEmailCodeSubmit(true)
-        Logger.info(value)
+        setLoadingEmailCodeSubmit(true);
+        Logger.info(value);
         //다음 단계로 이동
         toNextStep();
-        setLoadingEmailCodeSubmit(false)
-    }
+        setLoadingEmailCodeSubmit(false);
+    };
 
     const requestRegister = async () => {
-
         const validPassword = FromUtil.instance.checkPassword(password);
         if (!validPassword) {
             alert("비밀번호 형식이 올바르지 않습니다.");
@@ -77,43 +74,49 @@ export const useRegister = () => {
         const validNickname3 = FromUtil.instance.checkNickname("닉네임");
         const validNickname4 = FromUtil.instance.checkNickname("닉네임112");
 
-        Logger.info(validNickname, validNickname1, validNickname2, validNickname3, validNickname4)
+        Logger.info(
+            validNickname,
+            validNickname1,
+            validNickname2,
+            validNickname3,
+            validNickname4
+        );
 
         if (!validNickname) {
             alert("닉네임 형식이 올바르지 않습니다. (2~10자)");
             return;
         }
-        setLoadingRegister(true)
-        const res = await AuthService.requestCode(email)
-        setLoadingRegister(false)
+        setLoadingRegister(true);
+        const res = await AuthService.requestCode(email);
+        setLoadingRegister(false);
         if (res.isSuccess) {
-            Logger.info(email, emailCode, password, nickname, image)
-            toMain()
+            Logger.info(email, emailCode, password, nickname, image);
+            toMain();
         } else {
-            alert(`회원가입 실패: ${res.message}`)
+            alert(`회원가입 실패: ${res.message}`);
         }
-    }
-
+    };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmail(e.target.value);
-    }
+    };
     const handleEmailCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setEmailCode(e.target.value);
-    }
+    };
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(e.target.value);
-    }
-    const handlePasswordCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    };
+    const handlePasswordCheckChange = (
+        e: React.ChangeEvent<HTMLInputElement>
+    ) => {
         setPasswordCheck(e.target.value);
-    }
+    };
     const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setNickname(e.target.value);
-    }
+    };
     const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setImage(e.target.value);
-    }
-
+    };
 
     return {
         email,
@@ -123,8 +126,10 @@ export const useRegister = () => {
         setActiveStep,
         steps,
 
-        nickname, image,
-        password, passwordCheck,
+        nickname,
+        image,
+        password,
+        passwordCheck,
 
         requestCodeSend,
         requestCodeSubmit,
@@ -138,6 +143,6 @@ export const useRegister = () => {
 
         loadingEmailCode,
         loadingEmailCodeSubmit,
-        loadingRegister,
-    }
-}
+        loadingRegister
+    };
+};
