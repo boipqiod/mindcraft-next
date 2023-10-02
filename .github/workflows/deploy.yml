@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -12,25 +11,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-
       - name: Install dependencies
         run: npm install
 
-      - name: Build
+      - name: Build project
         run: npm run build
 
-      - name: Prepare Deploy Branch
+      - name: Switch to deploy branch
         run: |
           git checkout -b temp-deploy
-          git rm -r * || true
-          git restore --source=HEAD .next 
+          git rm -r *
+          git restore --source=HEAD .next
           git add .next/
           git commit -m "Keep only build artifacts"
 
-      - name: Push to Deploy Branch
-        run: |
-          git push origin +temp-deploy:deploy  
+      - name: Push to deploy branch
+        run: git push origin temp-deploy
