@@ -1,29 +1,30 @@
-name: Build and Push to Deploy Branch
+name: Deploy Build Artifacts
 
 on:
   push:
     branches:
       - main
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm install
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
 
-      - name: Build project
-        run: npm run build
-
-      - name: Switch to deploy branch
+      - name: Checkout Deploy Branch
         run: |
-          git checkout -b temp-deploy
-          git rm -r *
-          git restore --source=HEAD .next
-          git add .next/
-          git commit -m "Keep only build artifacts"
+          git checkout deploy || git checkout -b deploy
 
-      - name: Push to deploy branch
-        run: git push origin temp-deploy
+      - name: Remove All Files Except Build Artifacts
+        run: |
+          find . -maxdepth 1 ! -name '.next' ! -name '.' ! -name '.git' -exec git rm -r {} +
+
+      - name: Commit and Push Build Artifacts
+        run: |
+          git add .next/
+          git commit -m "Keep only build artifacts" || true  # 이미 최신 상태라면 커밋을 건너뜀
+          git push origin deploy
