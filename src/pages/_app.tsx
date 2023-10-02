@@ -31,7 +31,7 @@ const theme = extendTheme({
     }
 });
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const APP = ({ Component, pageProps }: AppProps) => {
     return (
         <ChakraProvider theme={theme}>
             <Provider store={store}>
@@ -52,7 +52,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                             content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
                         />
                         <meta name="theme-color" content="#80A9A3" />
-                        <meta property="og:type" content="website" />
+                        <meta property="og:type" content="wap" />
                         <link rel="icon" href={`${favicon.src}`} />
                         <meta property="og:image" content={image.src} />
 
@@ -65,4 +65,4 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     );
 };
 
-export default MyApp;
+export default APP;
