@@ -1,6 +1,5 @@
 import { MainItemList } from "@/components/MainItem/MainItemList";
 import { Stack, Box, HStack, Button, ButtonGroup } from "@chakra-ui/react";
-import { dummy, dummyBest } from "@/utils/dummy";
 import { colors, MindTestItem } from "@/types/common";
 import { SelectionBadge } from "@/components/common/SelectionBadge";
 import React from "react";
