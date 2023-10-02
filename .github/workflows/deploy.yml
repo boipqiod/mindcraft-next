@@ -15,6 +15,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
 
+      - name: Build Project
+        run: |
+          npm install
+          npm run build
+
       - name: Checkout Deploy Branch
         run: |
           git checkout deploy || git checkout -b deploy
