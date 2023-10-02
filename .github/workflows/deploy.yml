@@ -26,7 +26,7 @@ jobs:
       - name: Prepare Deploy Branch
         run: |
           git checkout -b temp-deploy
-          git rm -r *  # 현재 디렉토리의 모든 파일 삭제
+          git rm -r * || true
           git restore --source=HEAD .next 
           git add .next/
           git commit -m "Keep only build artifacts"
