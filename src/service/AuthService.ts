@@ -1,5 +1,5 @@
 import { Requester } from "@/utils/Requester";
-import { response } from "../types/api.response";
+import { response } from "@/types/api.response";
 import { request } from "@/types/api.request";
 import { APIConfig } from "@/types/api.config";
 

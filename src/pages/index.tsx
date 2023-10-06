@@ -8,6 +8,8 @@ import { MainItemScrollList } from "@/components/MainItem/MainItemScrollList";
 import { useMain } from "@/hooks/useMain";
 import { SmallAddIcon } from "@chakra-ui/icons";
 import TestService from "@/service/TestService";
+import Head from "next/head";
+import image from "@/assets/demo.jpg";
 
 type Props = {
     bestItem: MindTestItem[];
@@ -36,6 +38,12 @@ export const Index = ({ bestItem, items }: Props) => {
 
     return (
         <>
+            <Head>
+                <meta name="description" content="친구들과 함께하는 테스트 만들기 서비스, 마인드크래프트" />
+                <meta property="og:description" content="친구들과 함께하는 테스트 만들기 서비스, 마인드크래프트" />
+                <meta property="og:image" content={image.src} />
+            </Head>
+
             <Stack>
                 <Box w={"100%"}>
                     <HStack justify={"space-between"} align={"end"}>

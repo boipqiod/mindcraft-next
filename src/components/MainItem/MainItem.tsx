@@ -44,7 +44,7 @@ export const MainItem = (props: MainItemProps) => {
                     display={"flex"}
                     alignItems={"center"}
                     p={1}>
-                    <Avatar width={5} height={5} src="https://bit.ly/broken-link" />
+                    <Avatar width={5} height={5} src="" />
                     <Text fontSize={"8px"} fontWeight={"bold"} px={1}>
                         김민수
                     </Text>

@@ -9,8 +9,8 @@ export const Login = () => {
     const { toRegister, toMain } = usePage();
 
     useEffect(() => {
-        hook.isAuthenticated && toMain().then();
-    }, [hook.isAuthenticated, toMain]);
+        hook.auth && toMain().then();
+    }, [hook.auth, toMain]);
 
     return (
         <Box

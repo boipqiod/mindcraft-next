@@ -5,14 +5,12 @@ import { Avatar } from "@chakra-ui/react";
 
 import logo from "../assets/mindcraft_logo.png";
 import { colors } from "@/types/common";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/redux/store";
 import { logout } from "@/redux/auth/authAction";
 import { usePage } from "@/hooks/utils/usePage";
+import { useAuth } from "@/hooks/useAuth";
 
 export const NavigationBar = () => {
-    const dispatch = useDispatch<AppDispatch>();
-    const auth = useSelector((state: RootState) => state.auth.isAuthenticated);
+    const { auth, authDispatch, user } = useAuth();
     const { toMain, toSignIn } = usePage();
 
     const MenuItems = () => {
@@ -22,7 +20,7 @@ export const NavigationBar = () => {
                 <MenuItem>테스트 만들기</MenuItem>
                 <MenuItem
                     onClick={() => {
-                        dispatch(logout());
+                        authDispatch(logout());
                     }}>
                     로그아웃
                 </MenuItem>
@@ -50,9 +48,8 @@ export const NavigationBar = () => {
 
             <Menu>
                 <MenuButton boxSize={10}>
-                    <Avatar width={"100%"} height={"100%"} src="https://bit.ly/broken-link" />
+                    <Avatar width={"100%"} height={"100%"} src={user?.imageUrl} />
                 </MenuButton>
-
                 {MenuItems()}
             </Menu>
         </Box>

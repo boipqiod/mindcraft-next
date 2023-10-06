@@ -7,6 +7,21 @@ import Logger from "../utils/Logger";
 
 const steps = [{ description: "이메일 인증" }, { description: "인증 번호 입력" }, { description: "기타 정보 입력" }];
 
+type registerForm = {
+    email: string;
+    emailCode: string;
+    password: string;
+    passwordCheck: string;
+    nickname: string;
+    image?: string;
+};
+
+type loadings = {
+    loadingEmailCode: boolean;
+    loadingEmailCodeSubmit: boolean;
+    loadingRegister: boolean;
+};
+
 export const useRegister = () => {
     const { activeStep, setActiveStep } = useSteps({
         index: 0,
@@ -15,121 +30,106 @@ export const useRegister = () => {
 
     const { toMain } = usePage();
 
-    const [email, setEmail] = useState<string>("");
-    const [emailCode, setEmailCode] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [passwordCheck, setPasswordCheck] = useState<string>("");
-    const [nickname, setNickname] = useState<string>("");
-    const [image, setImage] = useState<string>("");
+    const [form, setForm] = useState<registerForm>({
+        email: "",
+        emailCode: "",
+        password: "",
+        passwordCheck: "",
+        nickname: "",
+        image: ""
+    });
 
-    const [loadingEmailCode, setLoadingEmailCode] = useState<boolean>(false);
-    const [loadingEmailCodeSubmit, setLoadingEmailCodeSubmit] = useState<boolean>(false);
-    const [loadingRegister, setLoadingRegister] = useState<boolean>(false);
+    const [loadings, setLoadings] = useState<loadings>({
+        loadingEmailCode: false,
+        loadingEmailCodeSubmit: false,
+        loadingRegister: false
+    });
 
-    const toNextStep = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log(e.target.name, e.target.value);
+        setForm({ ...form, [e.target.name]: e.target.value });
     };
 
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (e.target.files) {
+            const file = e.target.files[0];
+
+            //파일 용량 체크
+            if (file.size > 1024 * 1024 * 10) {
+                alert("파일 용량이 너무 큽니다. (10MB 이하)");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setForm({ ...form, image: reader.result as string });
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const toNextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
     const requestCodeSend = () => {
-        const validEmail = FromUtil.instance.checkEmail(email);
+        const validEmail = FromUtil.instance.checkEmail(form.email);
         if (!validEmail) {
             alert("이메일 형식이 올바르지 않습니다.");
             return;
         }
         //TODO: 이메일 인증 코드 전송
-
-        setLoadingEmailCode(true);
+        setLoadings((prevState) => ({ ...prevState, loadingEmailCode: true }));
         //인증 코드 입력창 보이기
         toNextStep();
-        setLoadingRegister(false);
+        setLoadings((prevState) => ({ ...prevState, loadingEmailCode: false }));
     };
 
     const requestCodeSubmit = (value: string) => {
         //TODO: 이메일 인증 코드 확인 요청
-        setLoadingEmailCodeSubmit(true);
+        setLoadings((prevState) => ({ ...prevState, loadingEmailCodeSubmit: true }));
         Logger.info(value);
         //다음 단계로 이동
         toNextStep();
-        setLoadingEmailCodeSubmit(false);
+        setLoadings((prevState) => ({ ...prevState, loadingEmailCodeSubmit: false }));
     };
 
     const requestRegister = async () => {
-        const validPassword = FromUtil.instance.checkPassword(password);
+        const validPassword = FromUtil.instance.checkPassword(form.password);
         if (!validPassword) {
             alert("비밀번호 형식이 올바르지 않습니다.");
             return;
         }
-        if (password !== passwordCheck) {
+        if (form.password !== form.passwordCheck) {
             alert("비밀번호가 일치하지 않습니다.");
             return;
         }
-        const validNickname = FromUtil.instance.checkNickname(nickname);
-        const validNickname1 = FromUtil.instance.checkNickname("nickname");
-        const validNickname2 = FromUtil.instance.checkNickname("1234");
-        const validNickname3 = FromUtil.instance.checkNickname("닉네임");
-        const validNickname4 = FromUtil.instance.checkNickname("닉네임112");
-
-        Logger.info(validNickname, validNickname1, validNickname2, validNickname3, validNickname4);
+        const validNickname = FromUtil.instance.checkNickname(form.nickname);
 
         if (!validNickname) {
             alert("닉네임 형식이 올바르지 않습니다. (2~10자)");
             return;
         }
-        setLoadingRegister(true);
-        const res = await AuthService.requestCode(email);
-        setLoadingRegister(false);
+
+        setLoadings((prevState) => ({ ...prevState, loadingRegister: true }));
+        const res = await AuthService.register(form.email, form.password, form.nickname, form.image);
         if (res.isSuccess) {
-            Logger.info(email, emailCode, password, nickname, image);
-            toMain();
+            await toMain();
         } else {
             alert(`회원가입 실패: ${res.message}`);
         }
     };
-
-    const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmail(e.target.value);
-    };
-    const handleEmailCodeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setEmailCode(e.target.value);
-    };
-    const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-    const handlePasswordCheckChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPasswordCheck(e.target.value);
-    };
-    const handleNicknameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNickname(e.target.value);
-    };
-    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setImage(e.target.value);
-    };
-
     return {
-        email,
-        emailCode,
+        form,
+        handleInputChange,
+        handleImageChange,
 
         activeStep,
         setActiveStep,
         steps,
 
-        nickname,
-        image,
-        password,
-        passwordCheck,
-
         requestCodeSend,
         requestCodeSubmit,
-        handleEmailChange,
-        handleEmailCodeChange,
-        handlePasswordChange,
         requestRegister,
-        handlePasswordCheckChange,
-        handleNicknameChange,
-        handleImageChange,
 
-        loadingEmailCode,
-        loadingEmailCodeSubmit,
-        loadingRegister
+        loadings
     };
 };
