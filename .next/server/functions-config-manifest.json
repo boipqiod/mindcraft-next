@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "functions": {
+    "/auth/login": {},
+    "/detail/[id]/play": {},
+    "/detail/[id]": {},
+    "/": {},
+    "/create": {}
+  }
+}
