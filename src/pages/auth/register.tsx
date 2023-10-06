@@ -1,14 +1,22 @@
 import { Heading, Stack, Step, StepIcon, StepIndicator, Stepper, StepSeparator, StepStatus } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRegister } from "@/hooks/useRegister";
 import { colors } from "@/types/common";
 import { RegisterFirstStep } from "@/components/Register/RegisterFirstStep";
 import { RegisterSecondStep } from "@/components/Register/RegisterSecondStep";
 import { RegisterThirdStep } from "@/components/Register/RegisterThirdStep";
+import { useAuth } from "@/hooks/useAuth";
+import { usePage } from "@/hooks/utils/usePage";
 
 export function Register() {
     const hook = useRegister();
     const activeStepText = hook.steps[hook.activeStep].description;
+    const { auth } = useAuth();
+    const { toMain } = usePage();
+
+    useEffect(() => {
+        auth && toMain();
+    }, []);
 
     return (
         <Stack maxW={"400px"} mx={"auto"} my={"8vh"} direction={"column"} alignItems={"center"}>
