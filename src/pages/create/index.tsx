@@ -1,151 +1,11 @@
-import { Box, FormLabel, Heading, HStack, Image, Input, Stack, Text, Tag, Select } from "@chakra-ui/react";
-import "react-quill/dist/quill.snow.css";
-
-import { useCreate } from "@/hooks/useCreate";
-import React from "react";
-import { KeyButton } from "@/components/common/KeyButton";
-import { QuillWrapper } from "@/components/common/QuillWrapper";
-<<<<<<< Updated upstream:src/pages/create/index.tsx
-
-export const Create = () => {
-    const hook = useCreate();
-    const basicInfo = () => {
-        return (
-            <>
-                <Stack>
-                    <Stack
-                        direction={{ base: "column", md: "row" }}
-                        w={"full"}
-                        alignItems={"flex-start"}
-                        mb={{ base: 5, md: 10 }}>
-                        {/*타이틀 및 텍스트 영역*/}
-                        <Stack m={2} w={"full"}>
-                            <Text fontSize={"lg"}>테스트 제목</Text>
-                            <Input
-                                id={"title"}
-                                onChange={hook.handleBasicInfoInput}
-                                value={hook.basicInfo.title}
-                                placeholder={"심리테스트 제목을 입력해주세요."}
-                            />
-                            <Text fontSize={"lg"}>테스트 설명</Text>
-                            <Textarea
-                                id={"description"}
-                                onChange={hook.handleBasicInfoInput}
-                                value={hook.basicInfo.description}
-                                rows={12}
-                                placeholder={"심리테스트에 대한 설명을 입력해주세요."}
-                            />
-                        </Stack>
-                        <Stack m={2} w={"full"} alignItems={"flex-start"}>
-                            <Text fontSize={"lg"}>테스트 이미지</Text>
-                            {/*이미지 인풋*/}
-                            <FormLabel w={"full"} aspectRatio={3 / 4} borderRadius={4} bg={"gray.200"}>
-                                {/*이미지 및 프리뷰*/}
-                                {hook.basicInfo.image !== "" ? (
-                                    <Image
-                                        w={"full"}
-                                        h={"full"}
-                                        objectFit={"cover"}
-                                        borderRadius={4}
-                                        src={hook.basicInfo.image}
-                                        alt={"심리테스트 이미지"}
-                                    />
-                                ) : (
-                                    <Box
-                                        w={"full"}
-                                        h={"full"}
-                                        display={"flex"}
-                                        alignItems={"center"}
-                                        justifyContent={"center"}
-                                        textAlign={"center"}
-                                        color={"gray.400"}>
-                                        <Text>
-                                            이미지를 업로드해주세요.
-                                            <br />
-                                            (3:4 비율 권장)
-                                        </Text>
-                                    </Box>
-                                )}
-
-                                <Input
-                                    id={"image"}
-                                    onChange={hook.handleBasicInfoInput}
-                                    hidden={true}
-                                    type={"file"}
-                                    accept="image/*"
-                                />
-                            </FormLabel>
-                        </Stack>
-                    </Stack>
-
-                    {/*숫자에 대한 값*/}
-                    <Stack w={"full"} direction={{ base: "column", md: "row" }} mb={{ base: 5, md: 10 }}>
-                        <Stack w={"full"}>
-                            <HStack>
-                                <Text>결과 수</Text>
-                                <Tooltip
-                                    mx={10}
-                                    label={"테스트 진행 후 사용자에게 보여질 수 있는 결과 수 입니다.(3~5개)"}>
-                                    <InfoOutlineIcon />
-                                </Tooltip>
-                            </HStack>
-                            <Input
-                                aria-label={"테스트 결과 수"}
-                                id={"result-count"}
-                                onChange={hook.handleBasicInfoInput}
-                                value={hook.basicInfo.resultCount}
-                                placeholder={"결과 수 (3~5개)"}
-                                type={"number"}
-                                max={5}
-                                min={3}
-                            />
-                        </Stack>
-                        <Stack w={"full"}>
-                            <HStack>
-                                <Text>질문 수</Text>
-                                <Tooltip mx={10} label={"사용자가 진행할 질문 수입니다. (3~5개)"}>
-                                    <InfoOutlineIcon />
-                                </Tooltip>
-                            </HStack>
-                            <Input
-                                id={"query-count"}
-                                onChange={hook.handleBasicInfoInput}
-                                value={hook.basicInfo.queryCount}
-                                placeholder={"질문 수"}
-                                type={"number"}
-                                max={5}
-                                min={3}
-                            />
-                        </Stack>
-                        <Stack w={"full"}>
-                            <HStack>
-                                <Text>응답 수</Text>
-                                <Tooltip mx={10} label={"사용자가 진행할 질문의 대답의 수입니다. (2~4개)"}>
-                                    <InfoOutlineIcon />
-                                </Tooltip>
-                            </HStack>
-
-                            <Input
-                                id={"answer-count"}
-                                onChange={hook.handleBasicInfoInput}
-                                value={hook.basicInfo.answerCount}
-                                placeholder={"질문 수"}
-                                type={"number"}
-                                max={4}
-                                min={2}
-                            />
-                        </Stack>
-                    </Stack>
-                </Stack>
-
-                <KeyButton onClick={hook.basicInfoNext} text={"다음"} />
-            </>
-        );
-    };
-=======
 import { useAuth } from "@/hooks/useAuth";
 import { usePage } from "@/hooks/utils/usePage";
 import { CreateBasicInfo } from "@/components/Create/CreateBasicInfo";
+import { useEffect } from "react";
+import { useCreate } from "@/hooks/useCreate";
+import { Box, FormLabel, Heading, HStack, Input, Select, Stack, Tag, Text, Image } from "@chakra-ui/react";
+import { QuillWrapper } from "@/components/common/QuillWrapper";
+import { KeyButton } from "@/components/common/KeyButton";
 
 export const Create = () => {
     const hook = useCreate();
@@ -156,7 +16,6 @@ export const Create = () => {
     useEffect(() => {
         !auth && toMain();
     }, [auth, toMain]);
->>>>>>> Stashed changes:src/pages/create.tsx
 
     const result = () => {
         return (

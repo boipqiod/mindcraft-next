@@ -14,6 +14,7 @@ type registerForm = {
     passwordCheck: string;
     username: string;
     image?: string;
+    imageFile?: File;
 };
 
 type loadings = {
@@ -61,9 +62,8 @@ export const useRegister = () => {
             }
 
             const reader = new FileReader();
-            reader.onloadend = () => {
-                setForm({ ...form, image: reader.result as string });
-            };
+            reader.onloadend = () => setForm({ ...form, image: reader.result as string, imageFile: file });
+
             reader.readAsDataURL(file);
         }
     };
@@ -110,7 +110,7 @@ export const useRegister = () => {
         }
 
         setLoadings((prevState) => ({ ...prevState, loadingRegister: true }));
-        const res = await AuthService.register(form.email, form.password, form.username, form.image);
+        const res = await AuthService.register(form.email, form.password, form.username, form.imageFile);
         if (res.isSuccess) {
             await toMain();
         } else {
