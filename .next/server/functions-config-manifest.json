@@ -1,10 +1,10 @@
 {
   "version": 1,
   "functions": {
+    "/create": {},
     "/auth/login": {},
-    "/detail/[id]/play": {},
     "/detail/[id]": {},
-    "/": {},
-    "/create": {}
+    "/detail/[id]/play": {},
+    "/": {}
   }
 }
