@@ -36,4 +36,21 @@ export class AuthService {
         };
         return await Requester.instance.request<typeof data, any>(APIConfig.auth.requestCodeSubmit, data);
     }
+
+    static async validateToken(token: string) {
+        const data: request.auth.validateToken = {
+            token: token
+        };
+        return await Requester.instance.request<typeof data, response.auth.validateToken>(
+            APIConfig.auth.validateToken,
+            data
+        );
+    }
+
+    static async checkUsername(username: string) {
+        const data: request.auth.checkUsername = {
+            username: username
+        };
+        return await Requester.instance.request<typeof data, any>(APIConfig.auth.checkUsername, data);
+    }
 }

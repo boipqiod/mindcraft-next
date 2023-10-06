@@ -14,7 +14,7 @@ export default class APIResponse<T> {
 
         this.isSuccess = code === 200;
         this.isError = code !== 200;
-        this.isTokenExpired = code === 401 || code === 403;
+        this.isTokenExpired = code === 409;
     }
 }
 
@@ -22,14 +22,22 @@ export namespace response {
     export namespace auth {
         export type signIn = {
             id: string;
+            email: string;
             username: string;
-            imageUrl: string;
+            profileImageUrl: string;
             token: string;
         };
 
         export type register = {
-            id: string; // 유저 아이디
-            token: string; // jwt 토큰
+            id: string;
+            token: string;
+        };
+
+        export type validateToken = {
+            id: string;
+            email: string;
+            username: string;
+            profileImageUrl: string;
         };
     }
 
@@ -38,11 +46,11 @@ export namespace response {
             id: number;
             title: string;
             description: string;
-            queryStep: string; // 총 질문 수
+            queryStep: string;
             userId: number;
             playedCount: number;
             sharedCount: number;
-            url: string; // 이미지 url
+            url: string;
         }[];
 
         export type testItemDetail = {
@@ -63,11 +71,11 @@ export namespace response {
             id: number;
             title: string;
             description: string;
-            queryStep: string; // 총 질문 수
+            queryStep: string;
             userId: number;
             playedCount: number;
             sharedCount: number;
-            url: string; // 이미지 url
+            url: string;
             createdAt: string;
         };
     }

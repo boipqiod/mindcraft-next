@@ -10,6 +10,7 @@ import { SmallAddIcon } from "@chakra-ui/icons";
 import TestService from "@/service/TestService";
 import Head from "next/head";
 import image from "@/assets/demo.jpg";
+import { useAuth } from "@/hooks/useAuth";
 
 type Props = {
     bestItem: MindTestItem[];
@@ -34,7 +35,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 };
 
 export const Index = ({ bestItem, items }: Props) => {
-    const main = useMain();
+    const hook = useMain();
 
     return (
         <>
@@ -48,7 +49,7 @@ export const Index = ({ bestItem, items }: Props) => {
                 <Box w={"100%"}>
                     <HStack justify={"space-between"} align={"end"}>
                         <SelectionBadge isSelected>추천 리스트</SelectionBadge>
-                        <Button size={"sm"} color={"white"} bg={colors.key} onClick={main.toCreate}>
+                        <Button size={"sm"} color={"white"} bg={colors.key} onClick={hook.handleClickToCreate}>
                             <SmallAddIcon />
                         </Button>
                     </HStack>
@@ -58,23 +59,23 @@ export const Index = ({ bestItem, items }: Props) => {
                 <ButtonGroup>
                     <SelectionBadge
                         onClick={() => {
-                            main.setSelectedIndex(0);
+                            hook.setSelectedIndex(0);
                         }}
-                        isSelected={main.selectedIndex === 0}>
+                        isSelected={hook.selectedIndex === 0}>
                         최신
                     </SelectionBadge>
                     <SelectionBadge
                         onClick={() => {
-                            main.setSelectedIndex(1);
+                            hook.setSelectedIndex(1);
                         }}
-                        isSelected={main.selectedIndex === 1}>
+                        isSelected={hook.selectedIndex === 1}>
                         베스트
                     </SelectionBadge>
                     <SelectionBadge
                         onClick={() => {
-                            main.setSelectedIndex(2);
+                            hook.setSelectedIndex(2);
                         }}
-                        isSelected={main.selectedIndex === 2}>
+                        isSelected={hook.selectedIndex === 2}>
                         최다 공유
                     </SelectionBadge>
                 </ButtonGroup>

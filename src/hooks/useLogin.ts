@@ -1,9 +1,9 @@
 import React from "react";
 import { usePage } from "./utils/usePage";
 import { AuthService } from "@/service/AuthService";
-import { User } from "@/types/common";
 import { login, logout } from "@/redux/auth/authAction";
 import { useAuth } from "@/hooks/useAuth";
+import StorageUtil from "@/utils/StorageUtil";
 
 export const useLogin = () => {
     //커스텀 후 참조
@@ -31,9 +31,11 @@ export const useLogin = () => {
                     email: form.email,
                     id: res.data.id,
                     username: res.data.username,
-                    imageUrl: res.data.imageUrl
+                    imageUrl: res.data.profileImageUrl,
+                    token: res.data.token
                 })
             );
+            StorageUtil.setToken(res.data.token);
             await toMain();
         } else {
             alert(`아이디와 비밀번호를 확인해주세요.`);

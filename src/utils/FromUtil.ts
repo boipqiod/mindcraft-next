@@ -10,7 +10,7 @@ export class FromUtil {
     private constructor() {}
 
     checkEmail(email: string): boolean {
-        const emailRegExp = /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
+        const emailRegExp = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[A-Za-z]+$/;
         return emailRegExp.test(email);
     }
     checkPassword(password: string): boolean {

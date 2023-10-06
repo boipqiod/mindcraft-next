@@ -8,6 +8,7 @@ import { colors } from "@/types/common";
 import { logout } from "@/redux/auth/authAction";
 import { usePage } from "@/hooks/utils/usePage";
 import { useAuth } from "@/hooks/useAuth";
+import StorageUtil from "@/utils/StorageUtil";
 
 export const NavigationBar = () => {
     const { auth, authDispatch, user } = useAuth();
@@ -21,6 +22,9 @@ export const NavigationBar = () => {
                 <MenuItem
                     onClick={() => {
                         authDispatch(logout());
+                        StorageUtil.removeToken();
+                        alert("로그아웃 되었습니다.");
+                        toMain().then();
                     }}>
                     로그아웃
                 </MenuItem>

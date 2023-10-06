@@ -24,7 +24,7 @@ export namespace APIConfig {
         };
         export const register: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/signup",
+            url: "/user",
             contentType: httpContentType.form
         };
         export const requestCode: ApiConfig = {
@@ -33,7 +33,15 @@ export namespace APIConfig {
         };
         export const requestCodeSubmit: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/email/verify"
+            url: "/auth/code"
+        };
+        export const validateToken: ApiConfig = {
+            method: httpMethod.post,
+            url: "/auth/token"
+        };
+        export const checkUsername: ApiConfig = {
+            method: httpMethod.get,
+            url: "/user/username"
         };
     }
     export namespace test {

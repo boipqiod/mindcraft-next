@@ -1,16 +1,13 @@
-import { MindTestItem } from "@/types/common";
-
 export default class StorageUtil {
-    static saveTestItemList = (itemList: MindTestItem[]) => {
-        window.sessionStorage.setItem("testItemList", JSON.stringify(itemList));
-    };
+    private static readonly TOKEN = "token";
 
-    static getTestItemList = (): MindTestItem[] => {
-        const testItemList = window.sessionStorage.getItem("testItemList");
-        if (testItemList) {
-            return JSON.parse(testItemList);
-        } else {
-            return [];
-        }
-    };
+    static setToken(token: string) {
+        localStorage.setItem(StorageUtil.TOKEN, token);
+    }
+    static getToken() {
+        return localStorage.getItem(StorageUtil.TOKEN);
+    }
+    static removeToken() {
+        localStorage.removeItem(StorageUtil.TOKEN);
+    }
 }

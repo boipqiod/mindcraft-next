@@ -16,7 +16,7 @@ export const RegisterFirstStep = ({ handleInputChange, requestCodeSend, loadingE
             <Input
                 placeholder="mindcraft@example.com"
                 mb={3}
-                type="email"
+                type={"email"}
                 name={"email"}
                 onChange={handleInputChange}
             />

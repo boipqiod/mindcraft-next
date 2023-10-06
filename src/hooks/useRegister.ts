@@ -3,7 +3,6 @@ import { useSteps } from "@chakra-ui/react";
 import { FromUtil } from "@/utils/FromUtil";
 import { usePage } from "./utils/usePage";
 import { AuthService } from "@/service/AuthService";
-import Logger from "../utils/Logger";
 
 const steps = [{ description: "이메일 인증" }, { description: "인증 번호 입력" }, { description: "기타 정보 입력" }];
 
@@ -29,7 +28,7 @@ export const useRegister = () => {
         count: steps.length
     });
 
-    const { toMain } = usePage();
+    const { toSignIn } = usePage();
 
     const [form, setForm] = useState<registerForm>({
         email: "",
@@ -47,7 +46,6 @@ export const useRegister = () => {
     });
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e.target.name, e.target.value);
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
@@ -60,36 +58,51 @@ export const useRegister = () => {
                 alert("파일 용량이 너무 큽니다. (10MB 이하)");
                 return;
             }
-
             const reader = new FileReader();
             reader.onloadend = () => setForm({ ...form, image: reader.result as string, imageFile: file });
-
             reader.readAsDataURL(file);
         }
     };
 
     const toNextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
-    const requestCodeSend = () => {
+    const requestCodeSend = async () => {
         const validEmail = FromUtil.instance.checkEmail(form.email);
         if (!validEmail) {
             alert("이메일 형식이 올바르지 않습니다.");
             return;
         }
-        //TODO: 이메일 인증 코드 전송
+
         setLoadings((prevState) => ({ ...prevState, loadingEmailCode: true }));
-        //인증 코드 입력창 보이기
-        toNextStep();
+        const res = await AuthService.requestCode(form.email);
         setLoadings((prevState) => ({ ...prevState, loadingEmailCode: false }));
+
+        if (res.isError) {
+            if (res.statusCode === 409) {
+                alert("이미 존재하는 이메일입니다.");
+            } else {
+                alert(`인증 코드 요청 실패: ${res.message}`);
+            }
+            return;
+        }
+        toNextStep();
     };
 
-    const requestCodeSubmit = (value: string) => {
-        //TODO: 이메일 인증 코드 확인 요청
+    const requestCodeSubmit = async (value: string) => {
         setLoadings((prevState) => ({ ...prevState, loadingEmailCodeSubmit: true }));
-        Logger.info(value);
-        //다음 단계로 이동
-        toNextStep();
+        const res = await AuthService.requestCodeSubmit(form.email, value);
         setLoadings((prevState) => ({ ...prevState, loadingEmailCodeSubmit: false }));
+
+        if (res.isError) {
+            if (res.statusCode === 401) {
+                alert("인증 코드가 올바르지 않습니다.");
+                return;
+            } else {
+                alert(`인증 코드 확인 요청 실패: ${res.message}`);
+                return;
+            }
+        }
+        toNextStep();
     };
 
     const requestRegister = async () => {
@@ -103,19 +116,34 @@ export const useRegister = () => {
             return;
         }
         const validNickname = FromUtil.instance.checkNickname(form.username);
-
         if (!validNickname) {
             alert("닉네임 형식이 올바르지 않습니다. (2~10자)");
             return;
         }
 
         setLoadings((prevState) => ({ ...prevState, loadingRegister: true }));
-        const res = await AuthService.register(form.email, form.password, form.username, form.imageFile);
-        if (res.isSuccess) {
-            await toMain();
-        } else {
-            alert(`회원가입 실패: ${res.message}`);
+
+        const resCheckUsername = await AuthService.checkUsername(form.username);
+        if (resCheckUsername.isError) {
+            if (resCheckUsername.statusCode === 409) {
+                alert("이미 존재하는 닉네임입니다.");
+            } else {
+                alert(`닉네임 중복 확인 실패: ${resCheckUsername.message}`);
+            }
+            setLoadings((prevState) => ({ ...prevState, loadingRegister: false }));
+            return;
         }
+
+        const resRegister = await AuthService.register(form.email, form.password, form.username, form.imageFile);
+
+        if (resRegister.isSuccess) {
+            alert("회원가입이 완료되었습니다.");
+            await toSignIn();
+        } else {
+            alert(`회원가입 실패: ${resRegister.message}`);
+        }
+
+        setLoadings((prevState) => ({ ...prevState, loadingRegister: false }));
     };
     return {
         form,

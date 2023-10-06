@@ -14,6 +14,7 @@ export type User = {
     email: string;
     username: string;
     imageUrl: string;
+    token: string;
 };
 
 /**** 메인 아이템 관련 ****/

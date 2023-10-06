@@ -7,6 +7,7 @@ import Head from "next/head";
 import favicon from "@/assets/favicon.png";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
+import { AuthWrapper } from "@/layout/AuthWrapper";
 
 const theme = extendTheme({
     breakpoints: {
@@ -46,7 +47,9 @@ const APP = ({ Component, pageProps }: AppProps) => {
                         <link rel="icon" href={`${favicon.src}`} />
                         <link rel="manifest" href="/manifest.json" />
                     </Head>
-                    <Component {...pageProps} />
+                    <AuthWrapper>
+                        <Component {...pageProps} />
+                    </AuthWrapper>
                 </AppLayout>
             </Provider>
         </ChakraProvider>

@@ -17,8 +17,6 @@ export const RegisterThirdStep = ({
     loadingRegister,
     image
 }: props) => {
-    console.log(image);
-
     return (
         <>
             <Stack direction={"row"} width={"full"} justifyContent={"space-between"}>

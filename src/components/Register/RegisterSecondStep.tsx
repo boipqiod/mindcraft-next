@@ -18,6 +18,8 @@ export const RegisterSecondStep = ({ requestCodeSubmit, loadingEmailCodeSubmit }
                         <PinInputField />
                         <PinInputField />
                         <PinInputField />
+                        <PinInputField />
+                        <PinInputField />
                     </PinInput>
                 </HStack>
             </FormControl>

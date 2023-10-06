@@ -18,6 +18,12 @@ export namespace request {
             email: string;
             code: string;
         };
+        export type validateToken = {
+            token: string;
+        };
+        export type checkUsername = {
+            username: string;
+        };
     }
 
     export namespace test {
