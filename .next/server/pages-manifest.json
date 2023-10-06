@@ -1,12 +1,7 @@
 {
   "/_app": "pages/_app.js",
-  "/auth/register": "pages/auth/register.html",
   "/_error": "pages/_error.js",
-  "/create": "pages/create.html",
-  "/auth/login": "pages/auth/login.html",
-  "/detail/[id]": "pages/detail/[id].js",
-  "/detail/[id]/play": "pages/detail/[id]/play.html",
-  "/": "pages/index.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/auth/login": "pages/auth/login.js",
+  "/": "pages/index.js"
 }
