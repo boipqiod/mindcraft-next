@@ -30,7 +30,7 @@ export const useLogin = () => {
                 login({
                     email: form.email,
                     id: res.data.id,
-                    nickname: res.data.nickname,
+                    username: res.data.username,
                     imageUrl: res.data.imageUrl
                 })
             );

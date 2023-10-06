@@ -12,7 +12,7 @@ type registerForm = {
     emailCode: string;
     password: string;
     passwordCheck: string;
-    nickname: string;
+    username: string;
     image?: string;
 };
 
@@ -35,7 +35,7 @@ export const useRegister = () => {
         emailCode: "",
         password: "",
         passwordCheck: "",
-        nickname: "",
+        username: "",
         image: ""
     });
 
@@ -102,7 +102,7 @@ export const useRegister = () => {
             alert("비밀번호가 일치하지 않습니다.");
             return;
         }
-        const validNickname = FromUtil.instance.checkNickname(form.nickname);
+        const validNickname = FromUtil.instance.checkNickname(form.username);
 
         if (!validNickname) {
             alert("닉네임 형식이 올바르지 않습니다. (2~10자)");
@@ -110,7 +110,7 @@ export const useRegister = () => {
         }
 
         setLoadings((prevState) => ({ ...prevState, loadingRegister: true }));
-        const res = await AuthService.register(form.email, form.password, form.nickname, form.image);
+        const res = await AuthService.register(form.email, form.password, form.username, form.image);
         if (res.isSuccess) {
             await toMain();
         } else {

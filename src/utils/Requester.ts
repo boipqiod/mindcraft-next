@@ -16,7 +16,8 @@ export class Requester {
 
     private constructor() {
         this.axios = axios.create({
-            baseURL: `${process.env.REACT_APP_API_BASE_URL}`
+            // baseURL: `${process.env.REACT_APP_API_BASE_URL}`
+            baseURL: `http://ec2-3-39-232-89.ap-northeast-2.compute.amazonaws.com:8080`
         });
     }
 
@@ -63,30 +64,26 @@ export class Requester {
             }
             return res;
         } catch (error: any) {
-            let e: any;
             let message: string;
-            let status: number = 5050;
+            let status: number = 500;
 
             // 서버 응답 에러 (status code가 2xx가 아닌 경우)
             if (error.response) {
-                e = error.response;
                 status = error.response.status;
                 message = "http 응답 실패";
 
                 // 요청이 전송되었으나 응답이 없는 경우 (네트워크 에러 등)
             } else if (error.request) {
-                e = error.request;
-                message = "응답 없음";
+                message = error.message;
 
                 // 그 외에 발생한 에러
             } else {
-                e = error.message;
-                message = "에러 메시지 확인";
-                status = 5051;
+                message = error.message;
+                status = 501;
             }
 
             const res = new APIResponse<U>(status, message);
-            this.errorLog(apiConfig, data, e, res);
+            this.errorLog(apiConfig, data, error, res);
             return res;
         }
     };

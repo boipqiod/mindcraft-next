@@ -11,13 +11,13 @@ import { useAuth } from "@/hooks/useAuth";
 
 export const NavigationBar = () => {
     const { auth, authDispatch, user } = useAuth();
-    const { toMain, toSignIn } = usePage();
+    const { toMain, toSignIn, toCreate } = usePage();
 
     const MenuItems = () => {
         return auth ? (
             <MenuList>
                 <MenuItem>마이 페이지</MenuItem>
-                <MenuItem>테스트 만들기</MenuItem>
+                <MenuItem onClick={toCreate}>테스트 만들기</MenuItem>
                 <MenuItem
                     onClick={() => {
                         authDispatch(logout());

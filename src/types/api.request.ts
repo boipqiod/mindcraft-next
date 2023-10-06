@@ -8,8 +8,8 @@ export namespace request {
         export type register = {
             email: string;
             password: string;
-            nickname: string;
-            url?: string; // 이미지 url
+            username: string;
+            profileImage?: File;
         };
         export type requestCode = {
             email: string;

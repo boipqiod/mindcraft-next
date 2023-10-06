@@ -12,7 +12,7 @@ export enum colors {
 export type User = {
     id: string;
     email: string;
-    nickname: string;
+    username: string;
     imageUrl: string;
 };
 

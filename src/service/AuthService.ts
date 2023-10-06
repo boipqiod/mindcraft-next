@@ -4,12 +4,12 @@ import { request } from "@/types/api.request";
 import { APIConfig } from "@/types/api.config";
 
 export class AuthService {
-    static async register(email: string, password: string, nickname: string, imageUrl?: string) {
+    static async register(email: string, password: string, username: string, image?: File) {
         const data: request.auth.register = {
             email: email,
             password: password,
-            nickname: nickname,
-            url: imageUrl
+            username: username,
+            profileImage: image
         };
         return await Requester.instance.request<typeof data, response.auth.register>(APIConfig.auth.register, data);
     }

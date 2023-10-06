@@ -1,24 +1,11 @@
-import {
-    Box,
-    FormLabel,
-    Heading,
-    HStack,
-    Image,
-    Input,
-    Stack,
-    Text,
-    Textarea,
-    Tooltip,
-    Tag,
-    Select
-} from "@chakra-ui/react";
-import { InfoOutlineIcon } from "@chakra-ui/icons";
+import { Box, FormLabel, Heading, HStack, Image, Input, Stack, Text, Tag, Select } from "@chakra-ui/react";
 import "react-quill/dist/quill.snow.css";
 
 import { useCreate } from "@/hooks/useCreate";
 import React from "react";
 import { KeyButton } from "@/components/common/KeyButton";
 import { QuillWrapper } from "@/components/common/QuillWrapper";
+<<<<<<< Updated upstream:src/pages/create/index.tsx
 
 export const Create = () => {
     const hook = useCreate();
@@ -155,6 +142,21 @@ export const Create = () => {
             </>
         );
     };
+=======
+import { useAuth } from "@/hooks/useAuth";
+import { usePage } from "@/hooks/utils/usePage";
+import { CreateBasicInfo } from "@/components/Create/CreateBasicInfo";
+
+export const Create = () => {
+    const hook = useCreate();
+
+    const { auth } = useAuth();
+    const { toMain } = usePage();
+
+    useEffect(() => {
+        !auth && toMain();
+    }, [auth, toMain]);
+>>>>>>> Stashed changes:src/pages/create.tsx
 
     const result = () => {
         return (
@@ -253,7 +255,7 @@ export const Create = () => {
                         })}
                     </Stack>
                 </Stack>
-                <KeyButton onClick={hook.resultNext} text={"다음"} />
+                <KeyButton onClick={hook.next} text={"다음"} />
             </>
         );
     };
@@ -344,7 +346,7 @@ export const Create = () => {
                         })}
                     </Stack>
                 </Stack>
-                <KeyButton onClick={hook.submit} text={"제출"} />
+                <KeyButton onClick={hook.next} text={"제출"} />
             </>
         );
     };
@@ -357,7 +359,14 @@ export const Create = () => {
             </Heading>
             <Stack>
                 {hook.step === 0 ? (
-                    <>{basicInfo()}</>
+                    <CreateBasicInfo
+                        handleBasicInfoInput={hook.handleBasicInfoInput}
+                        image={hook.basicInfo.image}
+                        resultCount={hook.basicInfo.resultCount}
+                        queryCount={hook.basicInfo.queryCount}
+                        answerCount={hook.basicInfo.answerCount}
+                        next={hook.next}
+                    />
                 ) : hook.step === 1 ? (
                     <>{result()}</>
                 ) : hook.step === 2 ? (

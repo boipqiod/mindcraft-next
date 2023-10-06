@@ -45,7 +45,7 @@ export const RegisterThirdStep = ({
                             placeholder={"닉네임"}
                             mb={3}
                             type={"text"}
-                            name={"nickname"}
+                            name={"username"}
                             onChange={handleInputChange}
                         />
                     </FormControl>

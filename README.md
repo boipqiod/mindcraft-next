@@ -1,34 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Mindcraft
 
-## Getting Started
+심리, 성향 테스트를 만들고 테스트를 진행 할 수 있습니다.
 
-First, run the development server:
+## 기획
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+### 1. 회원 기능
+- 로그인과 로그아웃이 가능합니다.
+- 로그인 시 테스트를 생성할 수 있습니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. 테스트
+- 테스트는 질문과 답변으로 이루어져 있습니다.
+- 각 질문마다 답변을 선택하면 다음 질문으로 넘어갑니다.
+- 각 질문의 답변이 다른 결과에 영향을 미칩니다.
+- 테스트가 끝나면 결과를 확인 할 수 있습니다.
+- 결과를 확인 후 친구들과 결과를 공유할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. 테스트 생성
+- 테스트를 생성할 수 있습니다.
+- 테스트 결과의 갯수, 질문의 갯수과 답변의 갯수를 설정합니다.
+- 각 결과마다 이미지를 삽입 할 수 있습니다.
+- 질문과 답변 입력 시 영향을 미치는 결과를 선택 할 수 있습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 4. 테스트 진행
 
-## Learn More
+### 5. 테스트 결과
 
-To learn more about Next.js, take a look at the following resources:
+## 기술 스택
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### React
+- React를 사용하여 UI를 구현했습니다.
+- 각 페이지가 재사용성이 높고, 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

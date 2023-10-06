@@ -2,6 +2,15 @@ import React, { useEffect, useState } from "react";
 import { MainTestBasicInfo, MindTestQueryItem, MindTestResultItem } from "@/types/common";
 import AnimationUtil from "../utils/AnimationUtil";
 
+type basicInfo = {
+    title: string;
+    description: string;
+    image: string;
+    resultCount: 3 | 4 | 5;
+    queryCount: 3 | 4 | 5;
+    answerCount: 2 | 3 | 4;
+};
+
 export const useCreate = () => {
     const [step, setStep] = useState(0);
 
@@ -24,6 +33,20 @@ export const useCreate = () => {
     const [queryShowIndex, setQueryShowIndex] = useState(0);
 
     useEffect(() => {}, []);
+
+    const next = () => {
+        switch (step) {
+            case 0:
+                basicInfoNext();
+                break;
+            case 1:
+                resultNext();
+                break;
+            case 2:
+                submit();
+                break;
+        }
+    };
 
     const basicInfoNext = () => {
         //TODO: 기본 정보 검증
@@ -86,18 +109,15 @@ export const useCreate = () => {
     const handleBasicInfoInput = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const value = e.target.value;
         setBasicInfo((prev) => {
-            console.log(basicInfo);
             const newInfo = { ...prev };
-            switch (e.target.id) {
+            switch (e.target.name) {
                 case "title":
-                    newInfo.title = value;
-                    break;
                 case "description":
-                    newInfo.description = value;
+                    newInfo[e.target.name] = value;
                     break;
                 case "image":
-                    const target = e.target as HTMLInputElement;
-                    const file = target.files?.[0];
+                    const imageTarget = e.target as HTMLInputElement;
+                    const file = imageTarget.files?.[0];
                     if (file) {
                         const reader = new FileReader();
                         reader.onloadend = () => {
@@ -109,24 +129,22 @@ export const useCreate = () => {
                         reader.readAsDataURL(file);
                     }
                     break;
-                case "result-count":
-                    let resultCount = Number(value.at(value.length - 1)) as 3 | 4 | 5;
-                    if (resultCount < 3) resultCount = 3;
-                    if (resultCount > 5) resultCount = 5;
-                    newInfo.resultCount = resultCount;
-                    break;
-                case "query-count":
-                    let queryCount = Number(value.at(value.length - 1)) as 3 | 4 | 5;
-                    if (queryCount < 3) queryCount = 3;
-                    if (queryCount > 5) queryCount = 5;
-                    newInfo.queryCount = queryCount;
-                    break;
-                case "answer-count":
-                    let answerCount = Number(value.at(value.length - 1)) as 2 | 3 | 4;
-                    if (answerCount < 2) answerCount = 2;
-                    if (answerCount > 4) answerCount = 4;
-                    newInfo.answerCount = answerCount;
-                    break;
+                case "resultCount":
+                case "queryCount":
+                case "answerCount":
+                    const numberTarget = e.target as HTMLInputElement;
+                    const max = Number(numberTarget.max);
+                    const min = Number(numberTarget.min);
+
+                    let numberValue = Number(value);
+                    if (numberValue > max) {
+                        numberValue = max;
+                    }
+                    if (numberValue < min) {
+                        numberValue = min;
+                    }
+
+                    newInfo[e.target.name] = numberValue as any;
             }
 
             return newInfo;
@@ -237,8 +255,6 @@ export const useCreate = () => {
 
         step,
 
-        basicInfoNext,
-        resultNext,
-        submit
+        next
     };
 };

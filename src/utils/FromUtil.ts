@@ -17,13 +17,13 @@ export class FromUtil {
         const passwordRegExp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         return passwordRegExp.test(password);
     }
-    checkNickname(nickname: string): boolean {
+    checkNickname(username: string): boolean {
         // 길이 체크 (2~10자)
-        if (nickname.length < 2 || nickname.length > 10) return false;
+        if (username.length < 2 || username.length > 10) return false;
         // 숫자만 있는지 체크
-        else if (/^\d+$/.test(nickname)) return false;
+        else if (/^\d+$/.test(username)) return false;
         // 한글, 영문 대소문자, 숫자 외의 문자가 있는지 체크
-        else if (/[^가-힣a-zA-Z0-9]/.test(nickname)) return false;
+        else if (/[^가-힣a-zA-Z0-9]/.test(username)) return false;
 
         return true;
     }

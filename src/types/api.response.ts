@@ -22,7 +22,7 @@ export namespace response {
     export namespace auth {
         export type signIn = {
             id: string;
-            nickname: string;
+            username: string;
             imageUrl: string;
             token: string;
         };

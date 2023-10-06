@@ -20,7 +20,7 @@ export namespace APIConfig {
     export namespace auth {
         export const signIn: ApiConfig = {
             method: httpMethod.post,
-            url: "/auth/sign-in"
+            url: "/auth/login"
         };
         export const register: ApiConfig = {
             method: httpMethod.post,
