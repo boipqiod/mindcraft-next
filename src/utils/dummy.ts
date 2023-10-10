@@ -233,18 +233,18 @@ export const dummy: MindTestItem[] = [
     }
 ];
 
-export const testDetialDummy: MindTestQueryItem[] = [
+export const testDetialDummy = [
     {
         step: 1,
         text: "당신이 밥을 먹을 때는?",
         answers: [
             {
-                text: "급하게 먹는다.",
-                resultIndex: 0
+                resultId: 0,
+                text: "급하게 먹는다."
             },
             {
-                text: "천천히 먹는다.",
-                resultIndex: 1
+                resultId: 0,
+                text: "천천히 먹는다."
             }
         ]
     },

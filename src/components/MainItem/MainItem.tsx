@@ -7,6 +7,8 @@ import { usePage } from "@/hooks/utils/usePage";
 import { useShare } from "@/hooks/utils/useShare";
 import { ContItem } from "./ContItem";
 import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { BiShareAlt } from "react-icons/bi";
+import { BsFillShareFill } from "react-icons/bs";
 
 type MainItemProps = {
     id: number;
@@ -40,26 +42,30 @@ export const MainItem = (props: MainItemProps) => {
                 <Box
                     h={7}
                     borderRadius={4}
-                    bg={"rgba(255, 255, 255, 0.5)"}
+                    bg={"rgba(255, 255, 255, 0.8)"}
                     display={"flex"}
                     alignItems={"center"}
                     p={1}>
-                    <Avatar width={5} height={5} src="" />
+                    <Avatar
+                        width={5}
+                        height={5}
+                        src="https://mindcraft-s3.s3.ap-northeast-2.amazonaws.com/profile/default.jpg"
+                    />
                     <Text fontSize={"8px"} fontWeight={"bold"} px={1}>
                         김민수
                     </Text>
                 </Box>
                 <Box
-                    h={7}
-                    w={7}
+                    h={5}
+                    w={5}
                     borderRadius={"50%"}
                     bg={colors.key}
                     display={"flex"}
                     alignItems={"center"}
                     justifyContent={"center"}
-                    p={2}
+                    p={1}
                     onClick={onShare}>
-                    <ExternalLinkIcon />
+                    <BsFillShareFill />
                 </Box>
             </Box>
         );

@@ -45,7 +45,7 @@ export const Detail = (props: { item: MindTestItem; id: string }) => {
             <Stack pos={"relative"} alignItems={"center"}>
                 {/*뒤로가기 버튼*/}
                 <Button pos={"absolute"} left={0} colorScheme={"transparent"} color={"black"} onClick={hook.toBack}>
-                    <ChevronLeftIcon />
+                    <ChevronLeftIcon w={30} h={30} />
                 </Button>
 
                 {/*제목*/}

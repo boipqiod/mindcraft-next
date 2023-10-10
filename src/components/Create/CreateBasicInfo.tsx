@@ -126,7 +126,7 @@ export const CreateBasicInfo = ({ handleBasicInfoInput, image, resultCount, quer
                         <Input
                             name={"answerCount"}
                             onChange={handleBasicInfoInput}
-                            placeholder={"질문 수"}
+                            placeholder={"대답 수"}
                             type={"number"}
                             max={4}
                             min={2}

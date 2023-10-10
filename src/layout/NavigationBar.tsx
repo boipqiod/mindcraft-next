@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
+import { Box, Button, Menu, MenuButton, MenuItem, MenuList, SkeletonCircle } from "@chakra-ui/react";
 import { Image } from "@chakra-ui/react";
 import { Avatar } from "@chakra-ui/react";
 
@@ -48,13 +48,19 @@ export const NavigationBar = () => {
             w={"100%"}
             maxW={800}
             h={{ base: "40px", md: "60px" }}>
-            <Image width={150} objectFit="scale-down" src={logo.src} alt="logo" onClick={toMain} cursor={"pointer"} />
+            <Image width={150} objectFit={"cover"} src={logo.src} alt="logo" onClick={toMain} cursor={"pointer"} />
 
             <Menu>
-                <MenuButton boxSize={10}>
-                    <Avatar width={"100%"} height={"100%"} src={user?.imageUrl} />
-                </MenuButton>
-                {MenuItems()}
+                {auth ? (
+                    <MenuButton boxSize={10}>
+                        <Avatar width={"100%"} height={"100%"} src={user?.imageUrl} />
+                        {MenuItems()}
+                    </MenuButton>
+                ) : (
+                    <Button onClick={toSignIn} boxSize={20} color={"white"} fontWeight={"bold"}>
+                        로그인
+                    </Button>
+                )}
             </Menu>
         </Box>
     );

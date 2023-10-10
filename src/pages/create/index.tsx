@@ -6,6 +6,7 @@ import { useCreate } from "@/hooks/useCreate";
 import { Box, FormLabel, Heading, HStack, Input, Select, Stack, Tag, Text, Image } from "@chakra-ui/react";
 import { QuillWrapper } from "@/components/common/QuillWrapper";
 import { KeyButton } from "@/components/common/KeyButton";
+import { CreateResult } from "@/components/Create/CreateReuslt";
 
 export const Create = () => {
     const hook = useCreate();
@@ -227,7 +228,14 @@ export const Create = () => {
                         next={hook.next}
                     />
                 ) : hook.step === 1 ? (
-                    <>{result()}</>
+                    <CreateResult
+                        resultItems={hook.resultItems}
+                        resultShowIndex={hook.resultShowIndex}
+                        setResultScroll={hook.setResultScroll}
+                        handleResultItemInput={hook.handleResultItemInput}
+                        handleResultHtmlInput={hook.handleResultHtmlInput}
+                        next={hook.next}
+                    />
                 ) : hook.step === 2 ? (
                     <>{question()}</>
                 ) : (

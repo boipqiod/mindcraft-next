@@ -1,1 +1,1 @@
-self.__REACT_LOADABLE_MANIFEST='{"../components/common/QuillWrapper.tsx -> react-quill":{"id":1167,"files":["static/chunks/eabe11fc.f81cc7913c760069.js","static/chunks/167.49a9bdedb768e9c3.js"]}}';
+self.__REACT_LOADABLE_MANIFEST="{\"../components/common/QuillWrapper.tsx -> react-quill\":{\"id\":\"../components/common/QuillWrapper.tsx -> react-quill\",\"files\":[\"static/chunks/node_modules_react-quill_lib_index_js.js\"]}}"
