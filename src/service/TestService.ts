@@ -9,8 +9,8 @@ export default class TestService {
         return new APIResponse(200, "success", dummy);
         // return await Requester.instance.request<undefined, response.test.testItem>(APIConfig.test.getTestList);
     }
-    static async getTestDetail(id: number) {
-        const item = dummy.find((item) => item.id === id);
+    static async getTestDetail(id: string) {
+        const item = dummy.find((item) => item.id === Number(id));
         if (item) {
             return new APIResponse(200, "success", item);
         } else {
@@ -39,5 +39,12 @@ export default class TestService {
             APIConfig.test.createTest,
             data
         );
+    }
+
+    static async getResult(id: string) {
+        const data: request.test.getResult = {
+            id: id
+        };
+        return await Requester.instance.request<typeof data, response.test.testResult>(APIConfig.test.getResult, data);
     }
 }

@@ -67,6 +67,14 @@ export namespace response {
                 }[];
             }[];
         };
+
+        export type testResult = {
+            id: number;
+            title: string;
+            description: string;
+            imageUrl: string;
+        };
+
         export type testItemCreate = {
             id: number;
             title: string;

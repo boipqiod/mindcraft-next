@@ -5,33 +5,21 @@ import { Avatar } from "@chakra-ui/react";
 
 import logo from "../assets/mindcraft_logo.png";
 import { colors } from "@/types/common";
-import { logout } from "@/redux/auth/authAction";
-import { usePage } from "@/hooks/utils/usePage";
-import { useAuth } from "@/hooks/useAuth";
-import StorageUtil from "@/utils/StorageUtil";
+import { useNavigation } from "@/hooks/useNavigation";
 
 export const NavigationBar = () => {
-    const { auth, authDispatch, user } = useAuth();
-    const { toMain, toSignIn, toCreate } = usePage();
+    const hook = useNavigation();
 
     const MenuItems = () => {
-        return auth ? (
+        return hook.auth ? (
             <MenuList>
                 <MenuItem>마이 페이지</MenuItem>
-                <MenuItem onClick={toCreate}>테스트 만들기</MenuItem>
-                <MenuItem
-                    onClick={() => {
-                        authDispatch(logout());
-                        StorageUtil.removeToken();
-                        alert("로그아웃 되었습니다.");
-                        toMain().then();
-                    }}>
-                    로그아웃
-                </MenuItem>
+                <MenuItem onClick={hook.toCreate}>테스트 만들기</MenuItem>
+                <MenuItem onClick={hook.signOut}>로그아웃</MenuItem>
             </MenuList>
         ) : (
             <MenuList>
-                <MenuItem onClick={toSignIn}>로그인</MenuItem>
+                <MenuItem onClick={hook.toSignIn}>로그인</MenuItem>
             </MenuList>
         );
     };
@@ -48,16 +36,21 @@ export const NavigationBar = () => {
             w={"100%"}
             maxW={800}
             h={{ base: "40px", md: "60px" }}>
-            <Image width={150} objectFit={"cover"} src={logo.src} alt="logo" onClick={toMain} cursor={"pointer"} />
+            <Image width={150} objectFit={"cover"} src={logo.src} alt="logo" onClick={hook.toMain} cursor={"pointer"} />
 
             <Menu>
-                {auth ? (
+                {hook.auth ? (
                     <MenuButton boxSize={10}>
-                        <Avatar width={"100%"} height={"100%"} src={user?.imageUrl} />
+                        <Avatar width={"100%"} height={"100%"} src={hook.user?.imageUrl} />
                         {MenuItems()}
                     </MenuButton>
                 ) : (
-                    <Button onClick={toSignIn} boxSize={20} color={"white"} fontWeight={"bold"}>
+                    <Button
+                        colorScheme={"none"}
+                        onClick={hook.toSignIn}
+                        boxSize={20}
+                        color={"white"}
+                        fontWeight={"bold"}>
                         로그인
                     </Button>
                 )}

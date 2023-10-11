@@ -28,7 +28,11 @@ export namespace request {
 
     export namespace test {
         export type getTestDetail = {
-            id: number;
+            id: string;
+        };
+
+        export type getResult = {
+            id: string;
         };
 
         export type createTest = {

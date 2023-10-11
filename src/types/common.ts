@@ -41,7 +41,7 @@ export type MainTestBasicInfo = {
 export type MindTestResultItem = {
     title: string;
     description: string;
-    image: string;
+    imageUrl: string;
 };
 
 export type MindTestQueryItem = {

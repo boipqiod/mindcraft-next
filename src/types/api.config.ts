@@ -53,6 +53,10 @@ export namespace APIConfig {
             method: httpMethod.get,
             url: "/mindTestes/:id"
         };
+        export const getResult: ApiConfig = {
+            method: httpMethod.get,
+            url: "/mindTest/:id/result"
+        };
         export const createTest: ApiConfig = {
             method: httpMethod.post,
             url: "/mindTest"
